@@ -15,6 +15,7 @@
     width: 20px;
     height: 20px;
     border: 2px solid #4341A5;
+    color: #4341A5;
     border-radius: 5px;
     outline: none;
 }
@@ -25,6 +26,7 @@
     background-color: #4341A5;
     border: none;
     outline: none;
+    color: white;
 }
 .etp-input::placeholder{
     color: #C5C4EE;

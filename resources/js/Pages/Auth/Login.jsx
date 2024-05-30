@@ -8,6 +8,13 @@ import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 import "../../../css/login.css";
 
+import {
+    faApple,
+    faFacebook,
+    faGoogle,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
@@ -86,30 +93,46 @@ export default function Login({ status, canResetPassword }) {
         //                 </Link>
         //             )}
 
-        //             <PrimaryButton className="ms-4" disabled={processing}>
-        //                 Log in
-        //             </PrimaryButton>
+                    // <PrimaryButton className="ms-4" disabled={processing}>
+                    //     Log in
+                    // </PrimaryButton>
         //         </div>
         //     </form>
 
         // </GuestLayout>
         <div className="login-container min-h-screen">
             <div className="login-form">
-                <form action="">
+                <div className="row m-0 text-light text-center">
+                    <b className="h2 m-0">Miło cię widzieć!</b>
+                </div>
+                <div className="row m-0 mb-5 text-light text-center">
+                    <p>Czym się dzisiaj zajmiesz?</p>
+                </div>
+                <form onSubmit={submit}>
                     <input
                         type="text"
-                        name=""
-                        id=""
+                        name="email"
+                        id="email"
+                        autoComplete="email"
                         placeholder="Email"
-                        className="mb-4 etp-input"
+                        className="etp-input"
+                        value={data.email}
+                        onChange={(e) => setData("email", e.target.value)}
                     />
+                    <InputError message={errors.email} className="mt-1 mb-4" />
+
                     <input
                         type="password"
-                        name=""
-                        id=""
+                        name="password"
+                        id="password"
                         placeholder="Hasło"
-                        className="mb-1 etp-input"
+                        className="mt-3 etp-input"
+                        value={data.password}
+                        autoComplete="current-password"
+                        onChange={(e) => setData("password", e.target.value)}
                     />
+                    <InputError message={errors.password} className="mt-1 mb-4" />
+
                     <div className="form-row mb-3">
                         {canResetPassword && (
                             <Link
@@ -132,12 +155,54 @@ export default function Login({ status, canResetPassword }) {
                             />
                         </label>
                     </div>
-                    <div className="row m-0 d-flex justify-content-center">
+                    <div className="row m-0 d-flex justify-content-center mb-5">
                         <button type="submit" className="etp-button">
                             Zaloguj się
                         </button>
                     </div>
+                    <div className="row m-0 d-flex justify-content-center mb-4">
+                        <span className="text-light d-flex gap-2 justify-content-center">
+                            <p>Nie masz jeszcze konta?</p>
+                            <Link className="link" href={route("register")}>
+                                Zarejestruj się!
+                            </Link>
+                        </span>
+                    </div>
                 </form>
+                <div className="row m-0 mb-4">
+                    <span className="br-text">Lub</span>
+                </div>
+
+                <div className="row m-0 mb-2">
+                    <a
+                        href="https://www.facebook.com"
+                        target="_blank"
+                        className="social-btn text-light facebook"
+                    >
+                        <FontAwesomeIcon icon={faFacebook} className="icon" />{" "}
+                        Zaloguj się przez Facebooka
+                    </a>
+                </div>
+                <div className="row m-0 mb-2">
+                    <a
+                        href="https://www.google.com"
+                        target="_blank"
+                        className="social-btn text-dark google"
+                    >
+                        <FontAwesomeIcon icon={faGoogle} className="icon" />{" "}
+                        Zaloguj się przez Google
+                    </a>
+                </div>
+                <div className="row m-0 mb-2">
+                    <a
+                        href="https://www.apple.com/pl/"
+                        target="_blank"
+                        className="social-btn text-light apple"
+                    >
+                        <FontAwesomeIcon icon={faApple} className="icon" />{" "}
+                        Zaloguj się przez Apple
+                    </a>
+                </div>
             </div>
         </div>
     );

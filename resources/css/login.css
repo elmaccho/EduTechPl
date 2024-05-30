@@ -21,3 +21,47 @@
     display: flex;
     justify-content: space-between;
 }
+.link{
+    color: #C5C4EE;
+}
+.br-text{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.br-text::before{
+    content: '';
+    width: 40%;
+    background-color: white;
+    height: 2px;
+    display: block;
+}
+.br-text::after{
+    content: '';
+    width: 40%;
+    background-color: white;
+    height: 2px;
+    display: block;
+}
+.social-btn{
+    padding: 10px 15px;
+    border-radius: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.facebook{
+    background-color: #1877F2;
+}
+.google{
+    background-color: #FFFFFF;
+}
+.apple{
+    background-color: #232323;
+}
+.icon{
+    font-size: 20px;
+}
