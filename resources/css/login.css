@@ -1,0 +1,23 @@
+.login-container{
+    background-color: #100F49;
+    background-image: url('/public/img/login/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form{
+    max-width: 350px;
+    width: 100%;
+}
+.login-form form{
+    display: flex;
+    flex-direction: column;
+}
+.form-row{
+    display: flex;
+    justify-content: space-between;
+}

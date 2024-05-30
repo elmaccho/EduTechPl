@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.etp-button{
+    background-color: #4341A5;
+    max-width: 180px;
+    padding: 5px;
+    color: white;
+    border-radius: 50px;
+    
+}
+.etp-checkbox{
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4341A5;
+    border-radius: 5px;
+    outline: none;
+}
+.etp-input{
+    border-radius: 15px;
+    height: 45px;
+    text-indent: 10px;
+    background-color: #4341A5;
+    border: none;
+    outline: none;
+}
+.etp-input::placeholder{
+    color: #C5C4EE;
+}
+.etp-checkbox:checked{
+    background-color: #4341A5;
+}
