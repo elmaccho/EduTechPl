@@ -83,8 +83,8 @@ export default function Login({ status, canResetPassword }) {
                             </Link>
                         )}
                         <label className="flex items-center">
-                            <span className="ms-2 text-sm text-gray-600 dark:text-gray-400 me-2">
-                                Remember me
+                            <span className="ms-2 text-light text-sm me-2">
+                                Zapamiętaj mnie
                             </span>
                             <Checkbox
                                 name="remember"

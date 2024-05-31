@@ -52,6 +52,10 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    transition: 0.3s;
+}
+.social-btn:hover{
+    opacity: 75%;
 }
 .facebook{
     background-color: #1877F2;

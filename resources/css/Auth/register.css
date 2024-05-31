@@ -79,8 +79,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    transition: 0.3s;
 }
-
+.social-btn:hover{
+    opacity: 75%;
+}
 .br-text {
     color: white;
     display: flex;
