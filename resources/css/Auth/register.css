@@ -1,0 +1,180 @@
+.register-container {
+    background-color: #100F49;
+    background-image: url('/public/img/register/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.types-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.mascot-wrapper {
+    height: 150px;
+}
+
+.mascot-img {
+    height: 100%;
+}
+
+.type-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 350px;
+    width: 380px;
+    border: 15px solid #4341A5;
+    background-color: #100F49;
+    border-radius: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.type-container:hover {
+    background-color: #4341A5;
+}
+
+.type-container p {
+    color: white;
+    font-size: 35px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+}
+
+.name-surname-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.name-surname-wrapper input {
+    width: 100%;
+}
+
+.social-btn {
+    padding: 10px 15px;
+    border-radius: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.br-text {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.br-text::before {
+    content: '';
+    width: 40%;
+    background-color: white;
+    height: 2px;
+    display: block;
+}
+
+.br-text::after {
+    content: '';
+    width: 40%;
+    background-color: white;
+    height: 2px;
+    display: block;
+}
+
+.facebook {
+    background-color: #1877F2;
+}
+
+.google {
+    background-color: #FFFFFF;
+}
+
+.apple {
+    background-color: #232323;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.active {
+    background-color: #4341A5;
+}
+
+
+.form-enter {
+    opacity: 0;
+}
+
+.form-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.form-exit {
+    opacity: 1;
+}
+
+.form-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+@media screen and (max-width: 900px) {
+    .types-wrapper{
+        gap: 20px;
+    }
+    .type-container{
+        width: 300px;
+        height: 300px;
+    }
+}
+@media screen and (max-width: 666px) {
+    .types-wrapper{
+        flex-direction: column;
+    }
+    .mascot-wrapper{
+        height: 100px;
+    }
+    .type-container{
+        width: 250px;
+        height: 250px;
+    }
+    .type-container p {
+        font-size: 25px;
+    }
+}
+@media screen and (max-width: 535px) {
+    .register-container form{
+        width: 100%;
+        padding: 0 25px;
+    }
+    .register-container form .register-form{
+        width: 100%;
+    }
+    .name-surname-wrapper{
+        flex-direction: column;
+    }
+}
