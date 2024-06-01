@@ -1,5 +1,6 @@
 import Navbar from "@/Components/Navbar";
 import SideMenu from "@/Components/SideMenu";
+import MainLayout from "@/Layouts/MainLayout";
 import { Head, Link } from "@inertiajs/react";
 import React from "react";
 
@@ -16,10 +17,8 @@ export default function Homepage({auth, appName}){
       setIsSideMenuOpen(false);
     };
     return(
-        <div className="main-container">
+        <MainLayout auth={auth} appName={appName}>
             <Head title="Strona główna"/>
-            <Navbar appName={appName} auth={auth} openSideMenu={openSideMenu}/>
-            <SideMenu appName={appName} auth={auth} isOpen={isSideMenuOpen} closeSideMenu={closeSideMenu}/>
-        </div>
+        </MainLayout>
     )
 }

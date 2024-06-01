@@ -22,9 +22,11 @@ export default function Navbar({ appName, auth, openSideMenu  }) {
                 <button className="open-side-menu" onClick={openSideMenu}>
                     <FontAwesomeIcon icon={faBars}/>
                 </button>
-                <h1 className="h3 text-light m-0">
-                    <strong>{appName}</strong>
-                </h1>
+                <Link href="/">
+                    <h2 className="h3 text-light m-0">
+                        <strong>{appName}</strong>
+                    </h2>
+                </Link>
                 <div className="search-bar">
                     <input
                         className="etp-search-bar"
@@ -67,7 +69,7 @@ export default function Navbar({ appName, auth, openSideMenu  }) {
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
-                                    <Dropdown.Link href="#" className="dropdown-link">
+                                    <Dropdown.Link href={route("profile.index")} className="dropdown-link">
                                         Profil
                                     </Dropdown.Link>
                                     <Dropdown.Link

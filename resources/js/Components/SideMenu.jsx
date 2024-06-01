@@ -1,5 +1,7 @@
 import React from "react";
 import "/resources/css/sidemenu.css";
+import { useRef, useEffect } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faXmark,
@@ -12,12 +14,34 @@ import {
 import { Link } from "@inertiajs/react";
 
 export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
+    const menuRef = useRef(null);
+
+    const handleClickOutside = (e) => {
+        if(menuRef.current && !menuRef.current.contains(event.target)){
+            closeSideMenu();
+        }
+    }
+
+    useEffect(() => {
+        if (isOpen) {
+          document.addEventListener('mousedown', handleClickOutside);
+        } else {
+          document.removeEventListener('mousedown', handleClickOutside);
+        }
+    
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, [isOpen]);
+
     return (
-        <div className={`side-menu ${isOpen ? 'toggle-menu' : ''}`}>
+        <div className={`side-menu ${isOpen ? 'toggle-menu' : ''}`} ref={menuRef}>
             <div className="upper-menu mb-5">
-                <h2 className="h3 text-light m-0">
-                    <strong>{appName}</strong>
-                </h2>
+                <Link href="/">
+                    <h2 className="h3 text-light m-0">
+                        <strong>{appName}</strong>
+                    </h2>
+                </Link>
                 <button className="close-menu" onClick={closeSideMenu}>
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
