@@ -8,7 +8,10 @@
     padding: 5px;
     color: white;
     border-radius: 50px;
-    
+    transition: 0.3s;
+}
+.etp-button:hover{
+    background-color: #3634a1;
 }
 .etp-checkbox{
     background-color: transparent;

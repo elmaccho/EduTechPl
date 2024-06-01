@@ -1,34 +1,25 @@
 import Navbar from "@/Components/Navbar";
-import { Link } from "@inertiajs/react";
+import SideMenu from "@/Components/SideMenu";
+import { Head, Link } from "@inertiajs/react";
 import React from "react";
 
-export default function Homepage({auth, appName}){
-    return(
-        // <div>
-        //     {auth.user ? (
-        //         <Link href={route('logout')} method="post" as="button">
-        //             wyloguj
-        //         </Link>
+import { useState } from 'react';
 
-        //     ) : (
-        //         <>
-        //         <Link
-        //             href={route('login')}
-        //             className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-        //         >
-        //             Log in
-        //         </Link>
-        //         <Link
-        //             href={route('register')}
-        //             className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-        //         >
-        //             Register
-        //         </Link>
-        //     </>
-        //     )}
-        // </div>
+export default function Homepage({auth, appName}){
+    const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
+    const openSideMenu = () => {
+      setIsSideMenuOpen(true);
+    };
+  
+    const closeSideMenu = () => {
+      setIsSideMenuOpen(false);
+    };
+    return(
         <div className="main-container">
-            <Navbar appName={appName} />
+            <Head title="Strona główna"/>
+            <Navbar appName={appName} auth={auth} openSideMenu={openSideMenu}/>
+            <SideMenu appName={appName} auth={auth} isOpen={isSideMenuOpen} closeSideMenu={closeSideMenu}/>
         </div>
     )
 }
