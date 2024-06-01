@@ -7,6 +7,7 @@ import { Head, Link } from "@inertiajs/react";
 
 import { useState } from 'react';
 import SwiperGallery from "@/Components/SwiperGallery";
+import PopularCategories from "@/Components/PopularCategories";
 
 export default function Homepage({auth, appName}){
     // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -21,7 +22,8 @@ export default function Homepage({auth, appName}){
     return(
         <MainLayout auth={auth} appName={appName}>
             <Head title="Strona główna"/>
-            <SwiperGallery/>
+            <SwiperGallery />
+            <PopularCategories />
         </MainLayout>
     )
 }

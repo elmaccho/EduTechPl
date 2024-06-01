@@ -20,7 +20,7 @@ export default function SwiperGallery({}) {
             }}
             navigation={true}
             modules={[Pagination, Navigation]}
-            className="mySwiper"
+            className="mySwiper mb-5"
         >
             <SwiperSlide>
                 <img src={slide1} alt="" />
