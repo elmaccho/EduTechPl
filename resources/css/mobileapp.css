@@ -1,0 +1,89 @@
+.mobile-app-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+}
+.mobile-app-box{
+    background-color: #4341A5;
+    border-radius: 25px;
+    width: 70%;
+    min-width: 1200px;
+    padding: 25px;
+    height: 170px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.mobile-app-text{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    color: white;
+}
+.mobile-app-text h2{
+    font-size: 30px;
+    font-weight: 600;
+}
+.mobile-app-text p{
+    font-size: 20px;
+    width: 350px;
+}
+.mobile-app-lazy-images{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+.mobile-app-image img{
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+}
+
+
+@media screen and (max-width: 1250px) {
+    .mobile-app-box{
+        min-width: unset;
+        width: 800px;
+        padding: 0 45px;
+    }
+    .mobile-app-text h2{
+        font-size: 20px;
+    }
+    .mobile-app-text p{
+        font-size: 15px;
+    }
+    .mobile-app-image img{
+        position: unset;
+        width: 120px;
+    }
+}
+@media screen and (max-width: 830px){
+    .mobile-app-box{
+        padding: 25px 45px;
+        width: 90%;
+    }
+    .mobile-app-image{
+        display: none;
+    }
+}
+@media screen and (max-width: 655px){
+    .mobile-app-box{
+        flex-direction: column;
+        gap: 25px;
+        height: unset;
+    }
+    .mobile-app-lazy-images{
+        display: flex;
+        flex-direction: row;
+    }
+}
+@media screen and (max-width: 480px){
+    .mobile-app-box{
+        padding: 15px;
+    }
+}

@@ -5,8 +5,6 @@
 .main-container{
     background-color: #100F49;
     background-image: url('/public/img/login/background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 .etp-button{
     background-color: #4341A5;
