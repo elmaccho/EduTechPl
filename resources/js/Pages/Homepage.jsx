@@ -11,6 +11,7 @@ import PopularCategories from "@/Components/PopularCategories";
 import TopCourses from "@/Components/TopCourses";
 import Newsletter from "@/Components/Newsletter";
 import MobileApp from "@/Components/MobileApp";
+import Footer from "@/Components/Footer";
 
 export default function Homepage({auth, appName}){
     // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);

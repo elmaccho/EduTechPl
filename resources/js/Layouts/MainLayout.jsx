@@ -1,3 +1,4 @@
+import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import SideMenu from "@/Components/SideMenu";
 import { usePage } from "@inertiajs/react";
@@ -46,6 +47,7 @@ export default function MainLayout({ children, auth}){
         <div className="content">
           {children}
         </div>
+        <Footer appName={appName}/>
       </div>
     );
   };

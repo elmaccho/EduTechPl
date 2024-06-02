@@ -86,4 +86,7 @@
     .mobile-app-box{
         padding: 15px;
     }
+    .mobile-app-text p{
+        width: 100%;
+    }
 }
