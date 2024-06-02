@@ -14,7 +14,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function PopularCategories() {
     return (
-        <div className="popular-categories">
+        <div className="popular-categories-container mb-5">
             <div className="row m-0 text-center mb-3">
                 <h2 className="text-light h2">Popularne Kategorie</h2>
             </div>

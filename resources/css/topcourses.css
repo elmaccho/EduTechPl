@@ -1,0 +1,134 @@
+.top-courses-container{
+    margin-bottom: 140px;
+}
+.cards-wrapper {
+    padding: 0 20px;
+}
+
+.top-card {
+    width: 320px;
+    background-color: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.top-card-img {
+    width: 100%;
+    height: 230px;
+}
+
+.top-card-text {
+    height: 230px;
+    padding: 15px;
+    color: white;
+    box-sizing: border-box;
+    background-color: #201E67;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-card-title {
+    font-size: 20px;
+    height: 50px;
+    text-align: left;
+}
+
+.top-card-reviews,
+.top-card-more-info {
+    display: flex;
+    align-items: center;
+}
+
+.top-card-reviews {
+    justify-content: left;
+    gap: 5px;
+}
+
+.average-rating {
+    background-color: #FBBC05;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-star-icon {
+    color: #FBBC05;
+}
+
+.top-card-more-info {
+    justify-content: space-between;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 15px;
+    text-align: left;
+}
+
+.author-name::before {
+    content: 'Prowadzący: ';
+}
+
+/* SWIPER STYLES */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.top-courses-container .swiper-button-prev,
+.top-courses-container .swiper-button-next {
+    color: rgb(255, 255, 255);
+    background-color: #100F49;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-courses-container .swiper-button-prev::after,
+.top-courses-container .swiper-button-next::after {
+    font-size: 35px;
+}
+
+.top-courses-container .swiper-button-disabled {
+    display: none;
+}
+
+.top-courses-container .swiper-pagination-bullet {
+    transition: 0.3s;
+    background: #CDCDCD;
+}
+
+.top-courses-container .swiper-pagination-bullet-active {
+    background: white;
+    transform: scale(1.3);
+}
+
+/* SWIPER STYLES */
