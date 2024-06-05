@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta name="description" content="EduTech.pl to platforma edukacyjna, która umożliwia studentom dostęp do kursów i notatek w celu efektywnej nauki. Korzystaj z różnorodnych materiałów edukacyjnych, rozwijaj umiejętności i osiągaj sukcesy w nauce.">
+        <meta name="keywords" content="EduTech, platforma edukacyjna, kursy online, notatki do nauki, student">
+        <meta name="author" content={{ config('app.name', 'Laravel') }}>
+
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->

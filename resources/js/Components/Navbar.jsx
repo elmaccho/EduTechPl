@@ -69,7 +69,7 @@ export default function Navbar({ appName, auth, openSideMenu  }) {
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
-                                    <Dropdown.Link href={route("profile.index")} className="dropdown-link">
+                                    <Dropdown.Link href={route("profile.index", auth.user.id)} className="dropdown-link">
                                         Profil
                                     </Dropdown.Link>
                                     <Dropdown.Link

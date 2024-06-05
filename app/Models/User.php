@@ -46,4 +46,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getAccountType()
+    {
+        if($this->account_type == 'teacher'){
+            return 'Nauczyciel';
+        } elseif($this->account_type == 'student'){
+            return 'Uczeń';
+        }
+
+        return 'Unknown';
+    }
 }

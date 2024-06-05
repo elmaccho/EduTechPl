@@ -53,7 +53,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                             Twoje kursy
                         </button>
                     </Link>
-                    <Link className="nav-link" href={route("profile.index")}>
+                    <Link className="nav-link" href={route("profile.index", auth.user.id)}>
                         <FontAwesomeIcon icon={faUser} /> <p>Profil</p>
                     </Link>
                     <Link className="nav-link">
