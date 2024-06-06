@@ -97,6 +97,14 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                         Dodaj notatki
                                     </Dropdown.Link>
                                     <Dropdown.Link
+                                        href="#"
+                                        method="post"
+                                        as="button"
+                                        className="dropdown-link"
+                                    >
+                                        Ustawienia
+                                    </Dropdown.Link>
+                                    <Dropdown.Link
                                         href={route("logout")}
                                         method="post"
                                         as="button"

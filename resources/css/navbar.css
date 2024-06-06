@@ -1,3 +1,8 @@
+.etp-navbar{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
 .upper-navbar{
     background-color: #201E67;
     padding: 15px 30px;

@@ -10,6 +10,7 @@ import {
     faMessage,
     faCartShopping,
     faUser,
+    faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@inertiajs/react";
 
@@ -73,6 +74,9 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     </Link>
                     <Link className="nav-link">
                         <FontAwesomeIcon icon={faCartShopping} /> <p>Koszyk</p>
+                    </Link>
+                    <Link className="nav-link">
+                        <FontAwesomeIcon icon={faGear} /> <p>Ustawienia</p>
                     </Link>
 
                     <div className="more-options mt-auto">
