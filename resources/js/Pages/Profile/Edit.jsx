@@ -1,36 +1,68 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import DeleteUserForm from './Partials/DeleteUserForm';
-import UpdatePasswordForm from './Partials/UpdatePasswordForm';
-import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
-import { Head } from '@inertiajs/react';
+import { Head } from "@inertiajs/react";
+import MainLayout from "@/Layouts/MainLayout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSliders, faUser } from "@fortawesome/free-solid-svg-icons";
 
-export default function Edit({ auth, mustVerifyEmail, status }) {
+import "/resources/css/Profile/edit.css";
+import { useState } from "react";
+import PersonalInfo from "@/Components/User Settings/PersonalInfo";
+import Preferences from "@/Components/User Settings/Preferences";
+
+export default function Edit({ auth, appName }) {
+    const [selectedForm, setSelectedForm] = useState("info");
+
+    const switchForms = () => {
+        switch (selectedForm) {
+            case "info":
+                return <PersonalInfo />;
+            case "preferences":
+                return <Preferences />;
+        }
+    };
+// 
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Profile</h2>}
-        >
-            <Head title="Profile" />
-
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    <div className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                        <UpdateProfileInformationForm
-                            mustVerifyEmail={mustVerifyEmail}
-                            status={status}
-                            className="max-w-xl"
-                        />
-                    </div>
-
-                    <div className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                        <UpdatePasswordForm className="max-w-xl" />
-                    </div>
-
-                    <div className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                        <DeleteUserForm className="max-w-xl" />
-                    </div>
+        <MainLayout auth={auth} appName={appName}>
+            <Head title="Ustawienia profilu" />
+            <div className="settings-container">
+                <div className="settings-navigation-wrapper">
+                    <button
+                        className={`setting-navigation-row text-left ${selectedForm == 'info' ? 'setting-nav-active ' : ''}`}
+                        onClick={() => setSelectedForm("info")}
+                    >
+                        <div className="setting-row-icon">
+                            <FontAwesomeIcon
+                                icon={faUser}
+                                className="setting-icon"
+                            />
+                        </div>
+                        <div className="setting-row-text">
+                            <div className="setting-row-title">Informacje</div>
+                            <div className="setting-row-description">
+                                Zaktualizuj swoje zdjęcie profilowe, imię i
+                                nazwisko, adres oraz numer telefonu
+                            </div>
+                        </div>
+                    </button>
+                    <button
+                        className={`setting-navigation-row text-left ${selectedForm == 'preferences' ? 'setting-nav-active ' : ''}`}
+                        onClick={() => setSelectedForm("preferences")}
+                    >
+                        <div className="setting-row-icon">
+                            <FontAwesomeIcon
+                                icon={faSliders}
+                                className="setting-icon"
+                            />
+                        </div>
+                        <div className="setting-row-text">
+                            <div className="setting-row-title">Preferencje</div>
+                            <div className="setting-row-description">
+                                Dostosuj wygląd, motyw
+                            </div>
+                        </div>
+                    </button>
                 </div>
+                <div className="settings-forms">{switchForms()}</div>
             </div>
-        </AuthenticatedLayout>
+        </MainLayout>
     );
 }

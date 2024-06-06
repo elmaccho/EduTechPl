@@ -75,7 +75,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     <Link className="nav-link">
                         <FontAwesomeIcon icon={faCartShopping} /> <p>Koszyk</p>
                     </Link>
-                    <Link className="nav-link">
+                    <Link className="nav-link" href={route("profile.edit")}>
                         <FontAwesomeIcon icon={faGear} /> <p>Ustawienia</p>
                     </Link>
 

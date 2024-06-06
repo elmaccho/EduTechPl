@@ -1,0 +1,56 @@
+.settings-container{
+    display: flex;
+}
+.settings-navigation-wrapper{
+    height: 690px;
+    width: 400px;
+    background-color: #100F49;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.setting-navigation-row{
+    height: 90px;
+    padding: 5px;
+    
+    box-shadow: rgba(48, 48, 48, 0.2) 0px 2px 8px 0px;
+    background-color: #201E67;
+    color: white;
+    
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+.setting-row-icon{
+    width: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.setting-icon{
+    font-size: 30px;
+}
+.setting-row-text{
+    width: 100%;
+}
+
+.setting-row-title{
+    font-weight: 900;
+    font-size: 20px;
+}
+.setting-row-description{
+    font-size: 15px;
+    font-weight: 200;
+}
+
+
+
+.setting-nav-active{
+    box-shadow: inset 0px 0px 6px 4px #191760;
+    background-color: #2d2a83;
+    transition: 0.3s;
+}

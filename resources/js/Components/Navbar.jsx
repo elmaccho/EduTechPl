@@ -97,9 +97,7 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                         Dodaj notatki
                                     </Dropdown.Link>
                                     <Dropdown.Link
-                                        href="#"
-                                        method="post"
-                                        as="button"
+                                        href={route('profile.edit')}
                                         className="dropdown-link"
                                     >
                                         Ustawienia

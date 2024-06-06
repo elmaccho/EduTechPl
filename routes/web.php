@@ -25,10 +25,10 @@ Route::get('/', function(){
 })->name('homepage');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profil/ustawienia', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/profile/{user}', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');
 
 require __DIR__.'/auth.php';
