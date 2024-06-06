@@ -17,25 +17,28 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
     const menuRef = useRef(null);
 
     const handleClickOutside = (e) => {
-        if(menuRef.current && !menuRef.current.contains(event.target)){
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
             closeSideMenu();
         }
-    }
+    };
 
     useEffect(() => {
         if (isOpen) {
-          document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener("mousedown", handleClickOutside);
         } else {
-          document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         }
-    
+
         return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
-      }, [isOpen]);
+    }, [isOpen]);
 
     return (
-        <div className={`side-menu ${isOpen ? 'toggle-menu' : ''}`} ref={menuRef}>
+        <div
+            className={`side-menu ${isOpen ? "toggle-menu" : ""}`}
+            ref={menuRef}
+        >
             <div className="upper-menu mb-5">
                 <Link href="/">
                     <h2 className="h3 text-light m-0">
@@ -53,7 +56,10 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                             Twoje kursy
                         </button>
                     </Link>
-                    <Link className="nav-link" href={route("profile.index", auth.user.id)}>
+                    <Link
+                        className="nav-link"
+                        href={route("profile.index", auth.user.id)}
+                    >
                         <FontAwesomeIcon icon={faUser} /> <p>Profil</p>
                     </Link>
                     <Link className="nav-link">
@@ -68,6 +74,27 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     <Link className="nav-link">
                         <FontAwesomeIcon icon={faCartShopping} /> <p>Koszyk</p>
                     </Link>
+
+                    <div className="more-options mt-auto">
+                        {auth.user.account_type == "teacher" && (
+                            <Link
+                                href={route("logout")}
+                                method="post"
+                                as="button"
+                                className="nav-link"
+                            >
+                                <p>Dodaj Kurs</p>
+                            </Link>
+                        )}
+                        <Link
+                            href="#"
+                            method="post"
+                            as="button"
+                            className="nav-link"
+                        >
+                            <p>Dodaj notatki</p>
+                        </Link>
+                    </div>
                 </div>
             )}
             <div className="auth-wrapper">
@@ -80,7 +107,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                             />
                         </div>
                         <Link
-                            href={route("logout")}
+                            href="#"
                             method="post"
                             as="button"
                             className="text-light"

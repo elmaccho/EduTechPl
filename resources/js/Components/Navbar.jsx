@@ -15,12 +15,12 @@ import {
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar({ appName, auth, openSideMenu  }) {
+export default function Navbar({ appName, auth, openSideMenu }) {
     return (
         <nav className="etp-navbar">
             <div className="upper-navbar">
                 <button className="open-side-menu" onClick={openSideMenu}>
-                    <FontAwesomeIcon icon={faBars}/>
+                    <FontAwesomeIcon icon={faBars} />
                 </button>
                 <Link href="/">
                     <h2 className="h3 text-light m-0">
@@ -69,8 +69,32 @@ export default function Navbar({ appName, auth, openSideMenu  }) {
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
-                                    <Dropdown.Link href={route("profile.index", auth.user.id)} className="dropdown-link">
+                                    <Dropdown.Link
+                                        href={route(
+                                            "profile.index",
+                                            auth.user.id
+                                        )}
+                                        className="dropdown-link"
+                                    >
                                         Profil
+                                    </Dropdown.Link>
+                                    {auth.user.account_type == 'teacher' && (
+                                        <Dropdown.Link
+                                            href="#"
+                                            method="post"
+                                            as="button"
+                                            className="dropdown-link"
+                                        >
+                                            Dodaj Kurs
+                                        </Dropdown.Link>
+                                    )}
+                                    <Dropdown.Link
+                                        href="#"
+                                        method="post"
+                                        as="button"
+                                        className="dropdown-link"
+                                    >
+                                        Dodaj notatki
                                     </Dropdown.Link>
                                     <Dropdown.Link
                                         href={route("logout")}

@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 
 
-export default function MainLayout({ children, auth, user}){
+export default function MainLayout({ children, auth}){
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
     const menuRef = useRef(null);
   

@@ -14,15 +14,6 @@ import MobileApp from "@/Components/MobileApp";
 import Footer from "@/Components/Footer";
 
 export default function Homepage({auth, appName}){
-    // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-
-    // const openSideMenu = () => {
-    //   setIsSideMenuOpen(true);
-    // };
-  
-    // const closeSideMenu = () => {
-    //   setIsSideMenuOpen(false);
-    // };
     return(
         <MainLayout auth={auth} appName={appName}>
             <Head title="Strona główna"/>

@@ -15,9 +15,10 @@ use Inertia\Response;
 class ProfileController extends Controller
 {
     public function index(User $user){
-
-        $user->getAccountType = $user->getAccountType();
         
+        $user->isTeacher = $user->isTeacher();
+        $user->isStudent = $user->isStudent();
+
         return Inertia::render('Profile/Index', [
             'user' => $user
         ]);

@@ -57,4 +57,18 @@ class User extends Authenticatable
 
         return 'Unknown';
     }
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+    public function isTeacher(){
+        return $this->teacher()->exists();
+    }
+    public function isStudent(){
+        return $this->student()->exists();
+    }
 }
