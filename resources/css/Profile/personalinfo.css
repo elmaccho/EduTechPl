@@ -1,0 +1,68 @@
+.form-edit-row{
+    display: flex;
+    justify-content: center;
+    gap: 135px;
+    width: 100%;
+}
+.form-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-image-wrapper{
+    width: 250px;
+    height: 250px;
+}
+.user-settings-input{
+    border-radius: 50px;
+    width: 350px;
+    text-indent: 6px;
+    background-color: #4341A5;
+    color: white;
+    border: none;
+}
+.user-settings-input::placeholder{
+    color: #C5C4EE;
+}
+.image-picker-label{
+    background-color: #4341A5;
+    color: white;
+
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.outside-ring{
+    width: 100%;
+    height: 100%;
+}
+.profile-picture{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+    .form-edit-row{
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 50px;
+    }
+}
+@media screen and (max-width: 420px) {
+    .form-col{
+        width: 100%;
+    }
+    .user-settings-input{
+        width: 100%;
+    }
+    .settings-forms form, .inputs-wrapper div{
+        width: 100%;
+    }
+}

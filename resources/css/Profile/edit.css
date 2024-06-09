@@ -3,7 +3,8 @@
 }
 .settings-navigation-wrapper{
     height: 690px;
-    width: 400px;
+    min-width: 430px;
+    max-width: 430px;
     background-color: #100F49;
 
     display: flex;
@@ -11,7 +12,9 @@
     gap: 1px;
 }
 .setting-navigation-row{
-    height: 90px;
+    height: 100px;
+    width: 100%;
+
     padding: 5px;
     
     box-shadow: rgba(48, 48, 48, 0.2) 0px 2px 8px 0px;
@@ -51,6 +54,51 @@
 
 .setting-nav-active{
     box-shadow: inset 0px 0px 6px 4px #191760;
-    background-color: #2d2a83;
+    border-left: 5px solid rgb(102, 0, 255);
     transition: 0.3s;
+}
+
+.settings-forms{
+    padding: 35px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+    .forms-settings-title{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .settings-navigation-wrapper{
+        min-width: 150px;
+        max-width: 150px;
+    }
+    .setting-navigation-row{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .setting-row-title{
+        text-align: center;
+    }
+    .setting-row-description{
+        display: none;
+    }
+}
+@media screen and (max-width: 650px) {
+    .settings-container{
+        flex-direction: column;
+    }
+    .settings-navigation-wrapper{
+        height: max-content;
+        width: 100%;
+
+        flex-direction: row;
+    }
+
+    .setting-nav-active{
+        border-left: unset;
+        border-bottom: 5px solid rgb(102, 0, 255);
+    }
 }

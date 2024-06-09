@@ -26,7 +26,7 @@ Route::get('/', function(){
 
 Route::middleware('auth')->group(function () {
     Route::get('/profil/ustawienia', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');

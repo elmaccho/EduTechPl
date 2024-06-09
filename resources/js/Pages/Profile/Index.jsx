@@ -4,7 +4,8 @@ import { Head, Link } from "@inertiajs/react";
 
 import "/resources/css/Profile/profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMessage, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCommentDots } from "@fortawesome/free-regular-svg-icons";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -19,7 +20,7 @@ import card2img from "/public/img/top courses/strukturydanychialgorytmy.png";
 import card3img from "/public/img/top courses/pythonpodstawy.png";
 import card4img from "/public/img/top courses/podstawyprojektowania.png";
 import card5img from "/public/img/top courses/podstawychemii.png";
-import { faCommentDots } from "@fortawesome/free-regular-svg-icons";
+import DefaultProfile from "@/Components/DefaultProfile";
 
 export default function Index({ auth, user }) {
     const [content, setContent] = useState("profile");
@@ -31,10 +32,7 @@ export default function Index({ auth, user }) {
                 <div className="profile-row">
                     <div className="user-image-profile">
                         <div className="outside-ring">
-                            <FontAwesomeIcon
-                                icon={faUser}
-                                className="user-profile-icon"
-                            />
+                            <DefaultProfile user={user} />
                         </div>
                     </div>
                     <div className="user-name-surname">

@@ -17,7 +17,12 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'phone_number' => ['nullable', 'digits:9'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'profile_image_path' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2048']
         ];
     }
 }
+// /storage/project/XW7mBHef7VB51Eq3/rMKd2r8egHtfXK3itF7znuUEiIUVNN0EnpyVhTyz.png
