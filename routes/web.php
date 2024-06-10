@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/kategorie', [CourseCategoryController::class, 'index'])->name('coursecategory.index');
 
 require __DIR__.'/auth.php';

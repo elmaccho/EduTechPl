@@ -26,7 +26,7 @@ export default function TopCourses() {
     return (
         <div className="top-courses-container">
             <div className="row m-0 text-left mb-3">
-                <h2 className="text-light h2">Ostatnio na topie</h2>
+                <h2 className="text-light text-center h2">Ostatnio na topie</h2>
             </div>
             <div className="cards-wrapper">
                 <Swiper
