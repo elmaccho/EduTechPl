@@ -14,6 +14,7 @@ import {
     faMessage,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import UserProfile from "./DefaultProfile";
 
 export default function Navbar({ appName, auth, openSideMenu }) {
     return (
@@ -65,7 +66,7 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                         className="navbar-user-dropdown"
                                         type="button"
                                     >
-                                        <FontAwesomeIcon icon={faUser} />
+                                        <UserProfile user={auth.user}/>
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>

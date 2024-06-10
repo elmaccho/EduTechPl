@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { usePage, useForm } from "@inertiajs/react";
 import InputLabel from "../InputLabel";
 import InputError from "../InputError";
-import DefaultProfile from "../DefaultProfile";
+import UserProfile from "../DefaultProfile";
 
 import "/resources/css/Profile/personalinfo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
+    const [preview, setPreview] = useState(null);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setPreview(URL.createObjectURL(file));
+        }
+    };
+
     const user = usePage().props.auth.user;
 
     const { data, setData, post, errors, processing, recentlySuccessful } =
@@ -19,19 +28,20 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
             email: user.email,
             address: user.address,
             phone_number: user.phone_number,
-            profile_image_path: user.profile_image_path,
+            profile_image_path: "",
         });
 
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("profile.update"));
+        post(route("profile.update"), {
+            _method: "put",
+        });
     };
 
     return (
         <>
             <h2 className="h2 text-light forms-settings-title">Informacje</h2>
-
             <form
                 onSubmit={submit}
                 className="d-flex flex-column align-items-center"
@@ -111,15 +121,19 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
                     <div className="form-col">
                         <div className="user-image-wrapper mb-5">
                             <div className="outside-ring">
-                                {user.profile_image_path == null ? (
-                                    <DefaultProfile user={user} />
+                                {preview ? (
+                                    <>
+                                        <img
+                                            src={preview}
+                                            alt={user.name + " " + user.surname}
+                                            className="profile-picture"
+                                        />
+                                        {console.log(preview)}
+                                    </>
                                 ) : (
-                                    <img
-                                        src={`/storage/${user.profile_image_path}`}
-                                        alt={user.name + user.surname}
-                                        className="profile-picture"
-                                    />
-                                )}
+                                    <UserProfile user={user}/>
+                                )
+                            }
                             </div>
                         </div>
                         <label
@@ -132,22 +146,21 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
                         <input
                             type="file"
                             id="image_picker"
+                            name="profile_image_path"
                             hidden
-                            onChange={(e) =>
-                                setData("profile_image_path", e.target.files[0])
-                            }
+                            onChange={(e) => {
+                                setData(
+                                    "profile_image_path",
+                                    e.target.files[0]
+                                );
+                                handleImageChange(e);
+                            }}
                         />
 
                         <InputError message={errors.profile_image_path} />
                     </div>
                 </div>
-                {progress && (
-                    <div className="mb-3">
-                        <progress value={progress.percentage} max="100">
-                            {progress.percentage}%
-                        </progress>
-                    </div>
-                )}
+
                 <button
                     type="submit"
                     className="etp-button ps-5 pe-5 pt-2 pb-2"

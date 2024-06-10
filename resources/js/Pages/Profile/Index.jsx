@@ -20,7 +20,7 @@ import card2img from "/public/img/top courses/strukturydanychialgorytmy.png";
 import card3img from "/public/img/top courses/pythonpodstawy.png";
 import card4img from "/public/img/top courses/podstawyprojektowania.png";
 import card5img from "/public/img/top courses/podstawychemii.png";
-import DefaultProfile from "@/Components/DefaultProfile";
+import UserProfile from "@/Components/DefaultProfile";
 
 export default function Index({ auth, user }) {
     const [content, setContent] = useState("profile");
@@ -32,7 +32,7 @@ export default function Index({ auth, user }) {
                 <div className="profile-row">
                     <div className="user-image-profile">
                         <div className="outside-ring">
-                            <DefaultProfile user={user} />
+                            <UserProfile user={user} />
                         </div>
                     </div>
                     <div className="user-name-surname">

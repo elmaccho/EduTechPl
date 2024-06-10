@@ -58,6 +58,8 @@
 @media screen and (max-width: 890px) {
   .slide-info {
     left: 50%;
+    top: 20px;
+    bottom: unset;
     width: 90%;
     transform: translateX(-50%);
   }

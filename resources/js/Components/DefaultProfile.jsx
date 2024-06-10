@@ -1,13 +1,21 @@
 import react from "react";
 
-import '/resources/css/defaultprofile.css'
+import "/resources/css/userprofile.css";
 
-import defaultImage from '/public/img/profile/profile.svg'
+import defaultImage from "/public/img/profile/profile.svg";
 
-export default function DefaultProfile({ user }){
+export default function UserProfile({ user }) {
     return (
         <div className="default-profile-wrapper">
-            <img src={defaultImage} alt={user.name + user.surname}/>
+            {user.profile_image_path == null ? (
+                <img src={defaultImage} alt={user.name + user.surname} />
+            ) : (
+                <img
+                    src={`/storage/${user.profile_image_path}`}
+                    alt={user.name + " " + user.surname}
+                    className="profile-picture"
+                />
+            )}
         </div>
-    )
+    );
 }

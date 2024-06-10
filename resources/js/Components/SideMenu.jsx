@@ -13,6 +13,7 @@ import {
     faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@inertiajs/react";
+import UserProfile from "./DefaultProfile";
 
 export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
     const menuRef = useRef(null);
@@ -105,10 +106,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                 {auth.user ? (
                     <div className="logout-wrapper">
                         <div className="user-profile">
-                            <FontAwesomeIcon
-                                icon={faUser}
-                                className="text-gray-300/100 text-lg"
-                            />
+                            <UserProfile user={auth.user} />
                         </div>
                         <Link
                             href="#"
