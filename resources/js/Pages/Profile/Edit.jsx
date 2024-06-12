@@ -39,7 +39,7 @@ export default function Edit({ auth, appName }) {
                             <div className="setting-row-title">Informacje</div>
                             <div className="setting-row-description">
                                 Zaktualizuj swoje zdjęcie profilowe, imię i
-                                nazwisko, adres oraz numer telefonu
+                                nazwisko, a także inne informacje.
                             </div>
                         </div>
                     </button>

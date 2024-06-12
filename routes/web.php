@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseCategoryController;
+use App\Http\Controllers\CoursesListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/kategorie', [CourseCategoryController::class, 'index'])->name('coursecategory.index');
+Route::get('/kategoria/{category:name}', [CoursesListController::class, 'index'])->name('courseslist.index');
 
 require __DIR__.'/auth.php';

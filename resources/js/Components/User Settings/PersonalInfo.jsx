@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { usePage, useForm } from "@inertiajs/react";
 import InputLabel from "../InputLabel";
@@ -8,6 +8,8 @@ import UserProfile from "../DefaultProfile";
 import "/resources/css/Profile/personalinfo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+
+import Swal from "sweetalert2";
 
 export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
     const [preview, setPreview] = useState(null);
@@ -29,10 +31,11 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
             address: user.address,
             phone_number: user.phone_number,
             profile_image_path: "",
+            about: user.about,
         });
 
     const submit = (e) => {
-        e.preventDefault();
+        e.preventDefault();       
 
         post(route("profile.update"), {
             _method: "put",
@@ -117,6 +120,31 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
                             />
                             <InputError message={errors.address} />
                         </div>
+                        <div className="mb-3">
+                            <InputLabel htmlFor="about" value="O mnie" />
+                            <input
+                                className="user-settings-input"
+                                id="address"
+                                type="text"
+                                placeholder="Adres"
+                                value={data.address || ""}
+                                autoComplete="address"
+                                onChange={(e) =>
+                                    setData("address", e.target.value)
+                                }
+                                hidden
+                            />
+                            <textarea
+                                className="user-settings-input user-settings-textarea"
+                                id="about"
+                                placeholder="O mnie"
+                                value={data.about || ""}
+                                onChange={(e) => 
+                                    setData("about", e.target.value)
+                                }
+                            ></textarea>
+                            <InputError message={errors.address} />
+                        </div>
                     </div>
                     <div className="form-col">
                         <div className="user-image-wrapper mb-5">
@@ -131,9 +159,8 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
                                         {console.log(preview)}
                                     </>
                                 ) : (
-                                    <UserProfile user={user}/>
-                                )
-                            }
+                                    <UserProfile user={user} />
+                                )}
                             </div>
                         </div>
                         <label

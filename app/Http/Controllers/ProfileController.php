@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -59,8 +60,9 @@ class ProfileController extends Controller
             $user->email_verified_at = null;
         }
     
+        Alert::success('Success Title', 'Success Message');
         $user->save();
-    
+
         return Redirect::route('profile.edit');
     }
     

@@ -60,7 +60,7 @@ export default function PopularCategories() {
                     </Link>
                 </div>
                 <div className="card-etp card-view-more">
-                    <Link>
+                    <Link href={route('coursecategory.index')}>
                         <div className="card-img d-flex justify-content-center align-items-center">
                             <p className="text-light h3">Zobacz Więcej Kategorii <FontAwesomeIcon icon={faArrowRight} /></p> 
                         </div>

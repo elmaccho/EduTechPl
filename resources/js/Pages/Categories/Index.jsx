@@ -1,14 +1,33 @@
-import MainLayout from "@/Layouts/MainLayout";
-import { Head } from "@inertiajs/react";
 import react from "react";
 
-export default function Index({ categories, auth, appName }){
-    return(
+import "/resources/css/Categories/categories.css";
+
+import MainLayout from "@/Layouts/MainLayout";
+import { Head, Link } from "@inertiajs/react";
+
+export default function Index({ categories, auth, appName }) {
+    return (
         <MainLayout auth={auth} appName={appName}>
             <Head title="Kategorie" />
-            {categories.map(category => (
-                <p key={category.id}>{category.name}</p>
-            ))}
+            <div className="categories-wrapper">
+                {categories.map((category) => (
+                    <Link
+                        href={route("courseslist.index", category.name)}
+                        className="category-link"
+                        key={category.id}
+                    >
+                        <div className="category-box">
+                            <img
+                                src="https://picsum.photos/300/250?random=1"
+                                className="category-image"
+                            />
+                            <div className="row m-0 text-center">
+                                <p>{category.name}</p>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
         </MainLayout>
-    )
+    );
 }

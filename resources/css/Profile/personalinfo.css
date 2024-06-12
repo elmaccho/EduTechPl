@@ -16,7 +16,7 @@
 }
 .user-settings-input{
     border-radius: 50px;
-    width: 350px;
+    width: 550px;
     text-indent: 6px;
     background-color: #4341A5;
     color: white;
@@ -47,7 +47,12 @@
     object-fit: cover;
     border-radius: 100%;
 }
+.user-settings-textarea{
+    border-radius: 10px;
+    resize: vertical;
 
+    height: 400px;
+}
 @media screen and (max-width: 1300px) {
     .form-edit-row{
         flex-direction: column-reverse;
