@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 
 
-export default function MainLayout({ children, auth}){
+export default function MainLayout({ children, auth, user }){
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
     const menuRef = useRef(null);
   
@@ -40,7 +40,7 @@ export default function MainLayout({ children, auth}){
 
     return (
       <div className="main-container">
-        <Navbar appName={appName} auth={auth} openSideMenu={openSideMenu} />
+        <Navbar appName={appName} auth={auth} openSideMenu={openSideMenu} user={user}/>
         <div ref={menuRef}>
           <SideMenu appName={appName} auth={auth} isOpen={isSideMenuOpen} closeSideMenu={closeSideMenu} />
         </div>

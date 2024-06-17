@@ -13,9 +13,9 @@ import Newsletter from "@/Components/Newsletter";
 import MobileApp from "@/Components/MobileApp";
 import Footer from "@/Components/Footer";
 
-export default function Homepage({auth, appName}){
+export default function Homepage({auth, appName, user}){
     return(
-        <MainLayout auth={auth} appName={appName}>
+        <MainLayout auth={auth} appName={appName} user={user}>
             <Head title="Strona główna"/>
             <SwiperGallery />
             <PopularCategories />

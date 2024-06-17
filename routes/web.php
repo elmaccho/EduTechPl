@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CoursesListController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -20,17 +22,19 @@ use Inertia\Inertia;
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', function(){
-    return Inertia::render('Homepage', [
-        'appName' => config('app.name', 'Laravel')
-    ]);
-})->name('homepage');
+Route::get('/', [HomeController::class, 'index'])->name('homepage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profil/ustawienia', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    
+    Route::middleware('admin')->group(function(){
+        Route::get('/panel' , [AdminPanelController::class, 'index'])->name('adminpanel.index');
+    });
 });
+
 
 Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/kategorie', [CourseCategoryController::class, 'index'])->name('coursecategory.index');

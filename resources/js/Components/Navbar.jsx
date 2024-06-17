@@ -16,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UserProfile from "./DefaultProfile";
 
-export default function Navbar({ appName, auth, openSideMenu }) {
+export default function Navbar({ appName, auth, openSideMenu, user }) {
     return (
         <nav className="etp-navbar">
             <div className="upper-navbar">
@@ -79,7 +79,7 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                     >
                                         Profil
                                     </Dropdown.Link>
-                                    {auth.user.account_type == 'teacher' && (
+                                    {user.isTeacher && (
                                         <Dropdown.Link
                                             href="#"
                                             method="post"
@@ -111,6 +111,11 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                     >
                                         Wyloguj się
                                     </Dropdown.Link>
+                                    {user.isAdmin && (
+                                        <Dropdown.Link href={route('adminpanel.index')} className="dropdown-link bg-red-700 text-light">
+                                            Panel Administracyjny
+                                        </Dropdown.Link>
+                                    )}
                                 </Dropdown.Content>
                             </Dropdown>
                         </>

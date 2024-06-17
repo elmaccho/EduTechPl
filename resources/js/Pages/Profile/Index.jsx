@@ -22,11 +22,10 @@ import card4img from "/public/img/top courses/podstawyprojektowania.png";
 import card5img from "/public/img/top courses/podstawychemii.png";
 import UserProfile from "@/Components/DefaultProfile";
 
-export default function Index({ auth, user }) {
+export default function Index({ auth, user}) {
     const [content, setContent] = useState("profile");
-
     return (
-        <MainLayout auth={auth}>
+        <MainLayout auth={auth} user={user}>
             <Head title={`Profil ${user.name} ${user.surname}`} />
             <div className="user-main-data-container">
                 <div className="profile-row">

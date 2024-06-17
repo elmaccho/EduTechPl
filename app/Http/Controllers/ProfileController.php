@@ -20,6 +20,7 @@ class ProfileController extends Controller
         
         $user->isTeacher = $user->isTeacher();
         $user->isStudent = $user->isStudent();
+        $user->isAdmin = $user->isAdmin();
 
         return Inertia::render('Profile/Index', [
             'user' => $user
