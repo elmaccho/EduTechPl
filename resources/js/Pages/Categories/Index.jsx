@@ -5,9 +5,9 @@ import "/resources/css/Categories/categories.css";
 import MainLayout from "@/Layouts/MainLayout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Index({ categories, auth, appName }) {
+export default function Index({ categories, auth, appName, user }) {
     return (
-        <MainLayout auth={auth} appName={appName}>
+        <MainLayout auth={auth} appName={appName} user={user}>
             <Head title="Kategorie" />
             <div className="categories-wrapper">
                 {categories.map((category) => (

@@ -9,11 +9,11 @@ import UserProfile from "../DefaultProfile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar({ user }) {
+export default function Navbar({ user, handleOpenSideMenu, isOpened }) {
     return (
         <div className="navbar">
             <div className="navbar-left d-flex gap-4">
-                <button className="sidebar-toggle">
+                <button className="open-side-menu" onClick={handleOpenSideMenu}>
                     <FontAwesomeIcon icon={faBars} className="text-xl"/>
                 </button>
                 <button className="searchbar-toggle">
@@ -42,10 +42,10 @@ export default function Navbar({ user }) {
                             Profil
                         </Dropdown.Link>
                         <Dropdown.Link
-                            href={route("profile.index", user.id)}
+                            href={route("homepage")}
                             className="dropdown-link"
                         >
-                            Strona
+                            Strona Główna
                         </Dropdown.Link>
                         <Dropdown.Link
                             href={route("logout")}

@@ -1,3 +1,7 @@
+.open-side-menu{
+    display: none;
+}
+
 .navbar{
     height: 65px;
     border-bottom: 1px solid #00000010;
@@ -7,10 +11,10 @@
     top: 0;
     right: 0;
 
-    width: calc(100% - 70px);
+    width: calc(100% - 250px);
 
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px 25px;
 }
 .navbar-user-image{
     width: 35px;
@@ -20,4 +24,17 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+@media screen and (max-width: 1025px) {
+    .navbar{
+        width: calc(100% - 70px);
+    }
+}
+@media screen and (max-width: 560px) {
+    .navbar{
+        width: 100%;
+    }
+    .open-side-menu{
+        display: block;
+    }    
 }

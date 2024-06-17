@@ -1,12 +1,24 @@
-.page-content{
-    width: 100%;
-    
-    padding-left: 70px;
+.page-content {
     box-sizing: border-box;
     background-color: #f9fafb;
 
     position: relative;
 }
-.main-content{
+
+.main-content {
     padding: 85px 20px 20px;
+    width: calc(100% - 250px);
+    margin-left: auto;
+}
+
+@media screen and (max-width: 1025px) {
+    .main-content {
+        width: calc(100% - 70px);
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .main-content {
+        width: 100%;
+    }
 }
