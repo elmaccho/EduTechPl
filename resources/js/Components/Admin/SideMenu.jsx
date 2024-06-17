@@ -43,6 +43,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
                         active == "users" ? "link-active" : ""
                     }`}
                     onClick={() => setActive("users")}
+                    href={route('adminpanel.users')}
                 >
                     <div className="link-icon text-violet-500">
                         <FontAwesomeIcon icon={faUser} />

@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
     
     
     Route::middleware('admin')->group(function(){
-        Route::get('/panel' , [AdminPanelController::class, 'index'])->name('adminpanel.index');
+        Route::get('/panel/dashboard' , [AdminPanelController::class, 'index'])->name('adminpanel.index');
+        Route::get('/panel/users', function(){
+            return Inertia::render('AdminPanel/Pages/Users');
+        })->name('adminpanel.users');
     });
 });
 
