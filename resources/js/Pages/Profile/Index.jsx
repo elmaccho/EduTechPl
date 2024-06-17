@@ -97,7 +97,7 @@ export default function Index({ auth, user }) {
                     {user.isTeacher && (
                         <Link
                             href="#"
-                            className="text-light d-flex gap-2 align-items-center text-lg ml-auto"
+                            className="nav-profile-button text-light d-flex gap-2 align-items-center text-lg ml-auto "
                         >
                             <FontAwesomeIcon icon={faCommentDots} />
                             <p>Umów spotkanie</p>
