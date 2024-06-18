@@ -2,15 +2,14 @@ import React from "react";
 
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head } from "@inertiajs/react";
-import Users from "./Pages/Users";
-import Categories from "./Pages/Categories";
 
-export default function Index({ user, users }){
+
+
+export default function Index({ user }){
     return(
         <AdminLayout user={user}>
             <Head title="Panel Administracyjny"/>
-            <Users />
-            <Categories />
+            <h1 className="h1">Dashboard</h1>
         </AdminLayout>
     )
 }

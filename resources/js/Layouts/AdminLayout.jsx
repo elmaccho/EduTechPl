@@ -17,7 +17,9 @@ export default function AdminLayout({ user, children }){
     return(
       <div className="admin-panel-container">
           <SideMenu appName={appName} handleCloseSideMenu={handleCloseSideMenu} isOpened={isOpened}/>
-          <Content user={user} handleOpenSideMenu={handleOpenSideMenu} children={children}/>
+          <Content user={user} handleOpenSideMenu={handleOpenSideMenu} children={children}>
+              {children}
+          </Content>
       </div>
     )
 }

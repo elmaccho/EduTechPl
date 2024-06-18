@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CoursesListController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,13 +32,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profil/ustawienia', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-    
-    Route::middleware('admin')->group(function(){
-        Route::get('/panel/dashboard' , [AdminPanelController::class, 'index'])->name('adminpanel.index');
-        Route::get('/panel/users', function(){
-            return Inertia::render('AdminPanel/Pages/Users');
-        })->name('adminpanel.users');
+
+
+    Route::middleware('admin')->prefix('panel')->group(function () {
+        Route::get('/', [AdminPanelController::class, 'index'])->name('adminpanel.index');
+        Route::get('/uzytkownicy', [UserController::class, 'index'])->name('adminpanel.users');
+        Route::get('/kursy', [CategoryController::class, 'index'])->name('adminpanel.courses');
+        Route::get('/kategorie', [CategoryController::class, 'index'])->name('adminpanel.categories');
+        Route::get('/notatki', [NotesController::class, 'index'])->name('adminpanel.notes');
+        Route::get('/slider', [SliderController::class, 'index'])->name('adminpanel.slider');
     });
 });
 
@@ -43,4 +49,4 @@ Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile
 Route::get('/kategorie', [CourseCategoryController::class, 'index'])->name('coursecategory.index');
 Route::get('/kategoria/{category:name}', [CoursesListController::class, 'index'])->name('courseslist.index');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
