@@ -1,21 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = auth()->user();
+        $auth = auth()->user();
+        
+        $users = User::all();
 
-        return Inertia('AdminPanel/Categories/Index', [
-            'user' => $user,
+        $count = User::count();
+        $weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+
+        return Inertia('AdminPanel/Users/Index', [
+            'users' => $users,
+            'user' => $auth,
+            'count' => $count,
+            'weekly' => $weekly,
         ]);
     }
 

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
-class CoursesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class CoursesController extends Controller
     {
         $user = auth()->user();
 
-        return Inertia('AdminPanel/Courses/Index', [
+        return Inertia('AdminPanel/Categories/Index', [
             'user' => $user,
         ]);
     }

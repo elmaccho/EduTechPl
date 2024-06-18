@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Head, usePage } from "@inertiajs/react";
+
 import SideMenu from "@/Components/Admin/SideMenu";
 import Content from "@/Components/Admin/Content";
-import { Head, usePage } from "@inertiajs/react";
+
+import '/resources/css/Admin/general.css';
 
 export default function AdminLayout({ user, children }){
   const [isOpened, setIsOpened] = useState(false);

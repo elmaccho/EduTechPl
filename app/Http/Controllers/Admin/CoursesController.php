@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-class UserController extends Controller
+class CoursesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
-        $auth = auth()->user();
+        $user = auth()->user();
 
-        return Inertia('AdminPanel/Users/Index', [
-            'users' => $users,
-            'user' => $auth,
+        return Inertia('AdminPanel/Courses/Index', [
+            'user' => $user,
         ]);
     }
 

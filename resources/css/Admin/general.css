@@ -1,0 +1,50 @@
+.admin-box{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #0000001c;
+    width: 100%;
+}
+.stats{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.chart-title{
+    width: 250px;
+}
+.table-user-image{
+    width: 35px;
+    height: 35px;
+}
+td{
+    transition: color 0.3s;
+}
+td:hover{
+    color: rgb(76, 118, 255);
+}
+
+@media screen and (max-width: 1090px) {
+    .stats .admin-box{
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+        overflow: hidden;
+    }
+    .stats .admin-box .chart-title{
+        height: 60px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 910px) {
+    .admin-box{
+        overflow-x: scroll;
+    }
+}
+@media screen and (max-width: 580px) {
+    .stats{
+        flex-direction: column;
+    }
+}
