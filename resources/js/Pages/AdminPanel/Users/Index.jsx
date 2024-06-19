@@ -12,6 +12,7 @@ import {
 
 import { PieChart } from "react-minimal-pie-chart";
 import UserProfile from "@/Components/DefaultProfile";
+import Pagination from "@/Components/Pagination";
 
 export default function Index({ users, user, count, weekly }) {
     const usersCount = count;
@@ -104,7 +105,7 @@ export default function Index({ users, user, count, weekly }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user, index) => (
+                        {users.data.map((user, index) => (
                             <tr key={user.id}>
                                 <th scope="row">{index + 1}</th>
                                 <td>
@@ -130,6 +131,7 @@ export default function Index({ users, user, count, weekly }) {
                         ))}
                     </tbody>
                 </table>
+                <Pagination links={users.links} />
             </div>
         </AdminLayout>
     );

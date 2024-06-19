@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $auth = auth()->user();
         
-        $users = User::all();
+        $users = User::paginate(10);
 
         $count = User::count();
         $weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
