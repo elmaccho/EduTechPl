@@ -11,9 +11,11 @@ export default function AdminLayout({ user, children }){
 
   const handleCloseSideMenu = () => {
     setIsOpened(false);
+    console.log('close');
   }
   const handleOpenSideMenu = () => {
     setIsOpened(true);
+    console.log('open');
   }
   const { appName } = usePage().props;
 

@@ -38,11 +38,19 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->prefix('panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'index'])->name('adminpanel.index');
+
         Route::get('/uzytkownicy', [UserController::class, 'index'])->name('adminpanel.users');
+        Route::get('/uzytkownicy/edytuj/{user}', [UserController::class, 'edit'])->name('adminpanel.users.edit');
+        Route::post('/uzytkownicy/edytuj/{user}', [UserController::class, 'update'])->name('adminpanel.users.update');
+
         Route::get('/kursy', [CoursesController::class, 'index'])->name('adminpanel.courses');
+
         Route::get('/kategorie', [CategoryController::class, 'index'])->name('adminpanel.categories');
+
         Route::get('/notatki', [NotesController::class, 'index'])->name('adminpanel.notes');
+
         Route::get('/slider', [SliderController::class, 'index'])->name('adminpanel.slider');
+
     });
 });
 

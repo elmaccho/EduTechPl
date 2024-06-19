@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\UserRole;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -17,7 +24,7 @@ class UserController extends Controller
     public function index()
     {
         $auth = auth()->user();
-        
+
         $users = User::paginate(10);
         $roles = UserRole::cases();
 
@@ -60,17 +67,39 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        $auth = auth()->user();
+        $roles = UserRole::cases();
+
+        return Inertia('AdminPanel/Users/Edit', [
+            'user' => $user,
+            'auth' => $auth,
+            'roles' => $roles,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('profile_image_path')) {
+            if ($user->profile_image_path) {
+                Storage::delete($user->profile_image_path);
+            }
+
+            $data['profile_image_path'] = $request->file('profile_image_path')->store('users_profile_images');
+        } else {
+            unset($data['profile_image_path']);
+        }
+
+        $user->fill($data);
+        $user->save();
+
+        return Redirect::route('adminpanel.users');
     }
 
     /**

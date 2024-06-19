@@ -18,7 +18,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
     
     return (
         <div
-            className={`sidemenu-container mi`}
+            className={`sidemenu-container ${isOpened ? "sidemenu-toggle" : ""}`}
         >
             <div className="sidemenu-brand-title">
                 <div className="sidemenu-brand-logo"></div>

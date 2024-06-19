@@ -16,7 +16,7 @@
     box-sizing: border-box;
     padding: 10px 25px;
 
-    z-index: 999;
+    z-index: 6;
 }
 .navbar-user-image{
     width: 35px;

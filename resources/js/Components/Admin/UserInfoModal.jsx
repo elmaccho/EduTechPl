@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import UserProfile from "../DefaultProfile";
 
-export default function UserInfoModal({ show, handleClose, user }) {
+export default function UserInfoModal({ showInfo, handleCloseInfo, user }) {
 
     const getStatus = () => {
         if(user.account_type == 'teacher'){
@@ -28,7 +28,7 @@ export default function UserInfoModal({ show, handleClose, user }) {
 
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showInfo} onHide={handleCloseInfo}>
                 <Modal.Header closeButton>
                     <Modal.Title>{user?.name} {user?.surname}</Modal.Title>
                 </Modal.Header>
@@ -45,13 +45,19 @@ export default function UserInfoModal({ show, handleClose, user }) {
                             <p>Email: {user.email}</p>
                             <p>Typ konta: <b>{getStatus()}</b></p>
                             <p>Ranga: <b className="text-uppercase">{getRole()}</b></p>
+
+                            <hr className="mt-4 mb-4"/>
+
+                            <p>Adres: <b>{user.address ? user.address : "Brak Adresu"}</b></p>
+                            <p>Numer telefonu: <b>{user.phone_number ? user.phone_number : "Brak Numeru Telefonu"}</b></p>
+                            <p>Opis: <b>{user.about ? user.about : "Brak Opisu"}</b></p>
                         </>
                     ) : (
                         <p>Brak danych.</p>
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleCloseInfo}>
                         Zamknij
                     </Button>
                 </Modal.Footer>

@@ -8,7 +8,7 @@ import UserInfoModal from "@/Components/Admin/UserInfoModal";
 
 import Button from "react-bootstrap/Button";
 
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,16 +23,20 @@ export default function Index({ users, user, count, weekly, roles }) {
     const usersCount = count;
     const usersWeekly = weekly;
 
-    const [show, setShow] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // modal info
+    const [showInfo, setShowInfo] = useState(false);
 
-    const showInfo = (user) => {
+    const handleCloseInfo = () => setShowInfo(false);
+    const handleShowInfo = () => setShowInfo(true);
+
+    const showInfoModal = (user) => {
         setSelectedUser(user);
-        handleShow();
+        handleShowInfo();
     };
+    // modal info
+
 
     return (
         <AdminLayout user={user}>
@@ -151,6 +155,7 @@ export default function Index({ users, user, count, weekly, roles }) {
                             <th scope="col">Imię</th>
                             <th scope="col">Nazwisko</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Ranga</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -166,6 +171,7 @@ export default function Index({ users, user, count, weekly, roles }) {
                                 <td>{user.name}</td>
                                 <td>{user.surname}</td>
                                 <td>{user.email}</td>
+                                <td>{user.role}</td>
                                 <td
                                     className="d-flex gap-2 justify-content-end"
                                     style={{ height: "52.5px" }}
@@ -173,16 +179,33 @@ export default function Index({ users, user, count, weekly, roles }) {
                                     <Button
                                         className="btn btn-primary btn-sm"
                                         onClick={() => {
-                                            showInfo(user);
+                                            showInfoModal(user);
+                                        }}
+                                        style={{
+                                            width: "35px",
+                                            height: "35px",
                                         }}
                                     >
                                         <FontAwesomeIcon icon={faInfo} />
                                     </Button>
-                                    <button className="btn btn-danger btn-sm">
-                                        <FontAwesomeIcon icon={faTrashCan} />
-                                    </button>
-                                    <button className="btn btn-success btn-sm">
+                                    <Link
+                                        className="btn btn-success btn-sm d-flex justify-content-center align-items-center"
+                                        style={{
+                                            width: "35px",
+                                            height: "35px",
+                                        }}
+                                        href={route('adminpanel.users.edit', user.id)}
+                                    >
                                         <FontAwesomeIcon icon={faPencil} />
+                                    </Link>
+                                    <button
+                                        className="btn btn-danger btn-sm"
+                                        style={{
+                                            width: "35px",
+                                            height: "35px",
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={faTrashCan} />
                                     </button>
                                 </td>
                             </tr>
@@ -193,9 +216,8 @@ export default function Index({ users, user, count, weekly, roles }) {
             </div>
 
             <UserInfoModal
-                show={show}
-                handleClose={handleClose}
-                handleShow={handleShow}
+                showInfo={showInfo}
+                handleCloseInfo={handleCloseInfo}
                 user={selectedUser}
             />
         </AdminLayout>
