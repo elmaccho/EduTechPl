@@ -10,13 +10,28 @@
     width: calc(100% - 250px);
     margin-left: auto;
 }
+.double-input-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    
+    width: 100%;
+}
+.double-input-row div{
+    width: 100%;
+}
 
 @media screen and (max-width: 1025px) {
     .main-content {
         width: calc(100% - 70px);
     }
 }
-
+@media screen and (max-width: 620px) {
+    .double-input-row{
+        flex-direction: column;
+        gap: unset;
+    }
+}
 @media screen and (max-width: 560px) {
     .main-content {
         width: 100%;

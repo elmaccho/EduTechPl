@@ -156,7 +156,6 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
                                             alt={user.name + " " + user.surname}
                                             className="profile-picture"
                                         />
-                                        {console.log(preview)}
                                     </>
                                 ) : (
                                     <UserProfile user={user} />
