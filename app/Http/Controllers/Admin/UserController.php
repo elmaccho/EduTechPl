@@ -32,13 +32,17 @@ class UserController extends Controller
 
         $count = User::count();
         $weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        $monthly = User::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->count();
+        $yearly = User::whereBetween('created_at', [Carbon::now()->startOfYear(), Carbon::now()->endOfYear()])->count();
 
         return Inertia('AdminPanel/Users/Index', [
             'users' => $users,
             'user' => $auth,
             'count' => $count,
-            'weekly' => $weekly,
             'roles' => $roles,
+            'weekly' => $weekly,
+            'monthly' => $monthly,
+            'yearly' => $yearly,
         ]);
     }
 

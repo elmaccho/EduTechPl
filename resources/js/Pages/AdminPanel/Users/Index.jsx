@@ -19,11 +19,10 @@ import {
 import Swal from "sweetalert2";
 import { PieChart } from "react-minimal-pie-chart";
 
-export default function Index({ users, user, count, weekly, roles }) {
+export default function Index({ users, user, count, roles, weekly, monthly, yearly }) {
     const { flash } = usePage().props;
 
     const usersCount = count;
-    const usersWeekly = weekly;
 
     const [selectedUser, setSelectedUser] = useState(null);
 
@@ -128,8 +127,8 @@ export default function Index({ users, user, count, weekly, roles }) {
                     >
                         <PieChart
                             data={[
-                                { value: usersWeekly, color: "#0084ff" },
-                                { value: 7 - usersWeekly, color: "#0084ff3b" },
+                                { value: weekly, color: "#0084ff" },
+                                { value: 7 - weekly, color: "#0084ff3b" },
                             ]}
                             lineWidth={15}
                             startAngle={-90}
@@ -146,7 +145,77 @@ export default function Index({ users, user, count, weekly, roles }) {
                                 width: "100%",
                             }}
                         >
-                            +{usersWeekly}
+                            +{weekly}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="stats">
+                <div className="admin-box d-flex align-items-center justify-content-between">
+                    <p className="chart-title h4">Nowi użytkownicy w tym miesiącu</p>
+                    <div
+                        style={{
+                            width: "100px",
+                            height: "100px",
+                            position: "relative",
+                        }}
+                    >
+                        <PieChart
+                            data={[
+                                { value: monthly, color: "#ff6a007c" },
+                                { value: 30 - monthly, color: "#ff6a00" },
+                            ]}
+                            lineWidth={15}
+                            startAngle={-90}
+                            animate={true}
+                        />
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                textAlign: "center",
+                                fontSize: "35px",
+                                width: "100%",
+                            }}
+                        >
+                            +{monthly}
+                        </div>
+                    </div>
+                </div>
+                <div className="admin-box d-flex align-items-center justify-content-between">
+                    <p className="chart-title h4">
+                        Nowi użytkownicy w tym roku
+                    </p>
+                    <div
+                        style={{
+                            width: "100px",
+                            height: "100px",
+                            position: "relative",
+                        }}
+                    >
+                        <PieChart
+                            data={[
+                                { value: yearly, color: "#ff0000" },
+                                { value: 365 - yearly, color: "#ff000036" },
+                            ]}
+                            lineWidth={15}
+                            startAngle={-90}
+                            animate={true}
+                        />
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                textAlign: "center",
+                                fontSize: "35px",
+                                width: "100%",
+                            }}
+                        >
+                            +{yearly}
                         </div>
                     </div>
                 </div>
