@@ -4,11 +4,11 @@
     border-radius: 15px;
     border: 1px solid #0000001c;
     width: 100%;
+    margin-bottom: 10px;
 }
 .stats{
     display: flex;
     gap: 10px;
-    margin-bottom: 10px;
 }
 .chart-title{
     width: 250px;

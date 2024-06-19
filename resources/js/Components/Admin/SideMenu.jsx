@@ -43,7 +43,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
                     </div>
                 </Link>
                 <Link
-                    className={`sidemenu-link ${url === '/panel/uzytkownicy' ? 'link-active' : ''}`}
+                    className={`sidemenu-link ${url.startsWith('/panel/uzytkownicy') ? 'link-active' : ''}`}
                     href={route('adminpanel.users')}
                 >
                     <div className="link-icon text-violet-500">
@@ -54,7 +54,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
                     </div>
                 </Link>
                 <Link
-                    className={`sidemenu-link ${url === '/panel/kursy' ? 'link-active' : ''}`}
+                    className={`sidemenu-link ${url.startsWith('/panel/kursy') ? 'link-active' : ''}`}
                     href={route('adminpanel.courses')}
                 >
                     <div className="link-icon text-orange-500">
@@ -65,7 +65,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
                     </div>
                 </Link>
                 <Link
-                    className={`sidemenu-link ${url === '/panel/notatki' ? 'link-active' : ''}`}
+                    className={`sidemenu-link ${url.startsWith('/panel/notatki') ? 'link-active' : ''}`}
                     href={route('adminpanel.notes')}
                 >
                     <div className="link-icon text-red-500">
@@ -76,7 +76,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
                     </div>
                 </Link>
                 <Link
-                    className={`sidemenu-link ${url === '/panel/kategorie' ? 'link-active' : ''}`}
+                    className={`sidemenu-link ${url.startsWith('/panel/kategorie') ? 'link-active' : ''}`}
                     href={route('adminpanel.categories')}
                 >
                     <div className="link-icon text-green-500">
@@ -87,7 +87,7 @@ export default function SideMenu({ appName, handleCloseSideMenu, isOpened }) {
                     </div>
                 </Link>
                 <Link
-                    className={`sidemenu-link ${url === '/panel/slider' ? 'link-active' : ''}`}
+                    className={`sidemenu-link ${url.startsWith('/panel/slider') ? 'link-active' : ''}`}
                     href={route('adminpanel.slider')}
                 >
                     <div className="link-icon text-red-700">

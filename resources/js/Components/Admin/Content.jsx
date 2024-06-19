@@ -6,7 +6,7 @@ import Navbar from "@/Components/Admin/Navbar";
 
 export default function Content({ user, handleOpenSideMenu, isOpened, children }){
     return(
-        <div className="page-content">
+        <div className="page-content min-h-screen">
           <Navbar user={user} handleOpenSideMenu={handleOpenSideMenu} isOpened={isOpened}/>
             <div className="main-content">
                 { children }

@@ -5,9 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-import Swal from 'sweetalert2';
-window.Swal = Swal;
-
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -21,4 +18,6 @@ createInertiaApp({
     progress: {
         color: '#4B5563',
     },
+}).then(()=>{
+    document.getElementById('app').removeAttribute('data-page');
 });

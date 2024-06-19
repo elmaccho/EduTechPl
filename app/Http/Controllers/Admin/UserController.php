@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\UserRole;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -18,6 +19,7 @@ class UserController extends Controller
         $auth = auth()->user();
         
         $users = User::paginate(10);
+        $roles = UserRole::cases();
 
         $count = User::count();
         $weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
@@ -27,6 +29,7 @@ class UserController extends Controller
             'user' => $auth,
             'count' => $count,
             'weekly' => $weekly,
+            'roles' => $roles,
         ]);
     }
 
