@@ -8,6 +8,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\UserRole;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -105,8 +107,17 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $name = $user->name ." ". $user->surname;
+        try {
+            if($user->id === auth()->id()){
+                return Redirect::route('adminpanel.users')->with('error_message', 'Nie usuwaj sam siebie!');
+            }
+            $user->delete();
+            return Redirect::route('adminpanel.users')->with('success_message', 'Użytkownik '. $name .' został usunięty!');
+        } catch (Throwable $e) {
+            return Redirect::route('adminpanel.users')->with('error_message', $e);
+        }
     }
 }

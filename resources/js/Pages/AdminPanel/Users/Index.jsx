@@ -5,10 +5,9 @@ import AdminLayout from "@/Layouts/AdminLayout";
 import UserProfile from "@/Components/DefaultProfile";
 import Pagination from "@/Components/Pagination";
 import UserInfoModal from "@/Components/Admin/UserInfoModal";
-
 import Button from "react-bootstrap/Button";
 
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,9 +16,12 @@ import {
     faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
+import Swal from "sweetalert2";
 import { PieChart } from "react-minimal-pie-chart";
 
 export default function Index({ users, user, count, weekly, roles }) {
+    const { flash } = usePage().props;
+
     const usersCount = count;
     const usersWeekly = weekly;
 
@@ -37,9 +39,47 @@ export default function Index({ users, user, count, weekly, roles }) {
     };
     // modal info
 
+    const showError = () => {
+        Swal.fire({
+            title: "Błąd!",
+            text: flash.error,
+            icon: "error",
+        })
+    }
+    const showSuccess = () => {
+        Swal.fire({
+            title: 'Sukces!',
+            text: flash.success,
+            icon: "success",
+        })
+    }
+
+    const deleteUser = (user) => {
+        let name = user.name + " " + user.surname;
+        Swal.fire({
+            title: `Czy chcesz usunąć użytkownika <br> ${name}`,
+            text: "Nie będziesz mógł cofnąć tej akcji!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Usuń",
+            cancelButtonText: "Anuluj",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.delete(route("adminpanel.users.delete", user.id));
+            }
+        });
+    };
 
     return (
         <AdminLayout user={user}>
+            {flash.error && (
+                showError()
+            )}
+            {flash.success && (
+                showSuccess()
+            )}
             <Head title="Użytkownicy" />
 
             <h1 className="h1 mb-4">Użytkownicy</h1>
@@ -194,7 +234,10 @@ export default function Index({ users, user, count, weekly, roles }) {
                                             width: "35px",
                                             height: "35px",
                                         }}
-                                        href={route('adminpanel.users.edit', user.id)}
+                                        href={route(
+                                            "adminpanel.users.edit",
+                                            user.id
+                                        )}
                                     >
                                         <FontAwesomeIcon icon={faPencil} />
                                     </Link>
@@ -204,6 +247,7 @@ export default function Index({ users, user, count, weekly, roles }) {
                                             width: "35px",
                                             height: "35px",
                                         }}
+                                        onClick={() => deleteUser(user)}
                                     >
                                         <FontAwesomeIcon icon={faTrashCan} />
                                     </button>

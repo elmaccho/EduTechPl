@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminPanelController::class, 'index'])->name('adminpanel.index');
 
         Route::get('/uzytkownicy', [UserController::class, 'index'])->name('adminpanel.users');
+        Route::delete('/uzytkownicy/{user}', [UserController::class, 'destroy'])->name('adminpanel.users.delete');
         Route::get('/uzytkownicy/edytuj/{user}', [UserController::class, 'edit'])->name('adminpanel.users.edit');
         Route::post('/uzytkownicy/edytuj/{user}', [UserController::class, 'update'])->name('adminpanel.users.update');
 
