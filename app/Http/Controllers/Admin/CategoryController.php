@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Throwable;
 
 class CategoryController extends Controller
 {
@@ -103,8 +104,13 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(CoursesCategory $category)
     {
-        //
+        try {
+            $category->delete();
+            return Redirect::route('adminpanel.categories')->with('success_message', 'Kategoria '. $category->name .' została usunięta!');
+        } catch (Throwable $e) {
+            return Redirect::route('adminpanel.categories')->with('error_message', $e);
+        }
     }
 }

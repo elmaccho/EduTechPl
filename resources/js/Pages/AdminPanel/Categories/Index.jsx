@@ -4,7 +4,7 @@ import AdminLayout from "@/Layouts/AdminLayout";
 
 import Pagination from "@/Components/Pagination";
 
-import { Head, Link, usePage } from "@inertiajs/react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
 
 import { PieChart } from "react-minimal-pie-chart";
 import Button from "react-bootstrap/Button";
@@ -37,6 +37,23 @@ export default function Index({ user, categories, categoriesCount }) {
         handleShowInfo();
     };
     // modal info
+
+    const deleteCategory = (category) => {
+        Swal.fire({
+            title: `Czy chcesz usunąć kategorię <br> ${category.name}`,
+            text: "Nie będziesz mógł cofnąć tej akcji!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Usuń",
+            cancelButtonText: "Anuluj",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.delete(route("adminpanel.categories.delete", category.id));
+            }
+        });
+    };
 
     const showSuccess = () => {
         Swal.fire({
@@ -163,7 +180,7 @@ export default function Index({ user, categories, categoriesCount }) {
                                                 width: "35px",
                                                 height: "35px",
                                             }}
-                                            onClick={() => deleteUser(user)}
+                                            onClick={() => deleteCategory(category)}
                                         >
                                             <FontAwesomeIcon icon={faTrashCan} />
                                         </button>

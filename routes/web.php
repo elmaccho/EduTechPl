@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/kursy', [CoursesController::class, 'index'])->name('adminpanel.courses');
 
         Route::get('/kategorie', [CategoryController::class, 'index'])->name('adminpanel.categories');
+        Route::delete('/kategorie/{category}', [CategoryController::class, 'destroy'])->name('adminpanel.categories.delete');
         Route::get('/kategorie/dodaj', [CategoryController::class, 'create'])->name('adminpanel.categories.create');
         Route::post('/kategorie/dodaj', [CategoryController::class, 'store'])->name('adminpanel.categories.store');
         Route::get('/kategorie/edytuj/{category}', [CategoryController::class, 'edit'])->name('adminpanel.categories.edit');
