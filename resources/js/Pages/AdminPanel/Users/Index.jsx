@@ -43,6 +43,10 @@ export default function Index({ users, user, count, roles, weekly, monthly, year
             title: "Błąd!",
             text: flash.error,
             icon: "error",
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1200,
+            timerProgressBar: true,
         })
     }
     const showSuccess = () => {
@@ -50,6 +54,10 @@ export default function Index({ users, user, count, roles, weekly, monthly, year
             title: 'Sukces!',
             text: flash.success,
             icon: "success",
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1200,
+            timerProgressBar: true,
         })
     }
 

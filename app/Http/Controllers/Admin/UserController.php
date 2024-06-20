@@ -105,7 +105,7 @@ class UserController extends Controller
         $user->fill($data);
         $user->save();
 
-        return Redirect::route('adminpanel.users');
+        return Redirect::route('adminpanel.users')->with('success_message', 'Zaktualizowano dane!');
     }
 
     /**

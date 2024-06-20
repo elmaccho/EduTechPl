@@ -8,6 +8,9 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
+    // php artisan db:seed
+
     /**
      * Seed the application's database.
      */
