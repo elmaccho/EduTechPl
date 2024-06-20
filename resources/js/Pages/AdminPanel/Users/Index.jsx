@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 
 import AdminLayout from "@/Layouts/AdminLayout";
 
@@ -37,6 +37,18 @@ export default function Index({ users, user, count, roles, weekly, monthly, year
         handleShowInfo();
     };
     // modal info
+
+    useEffect(() => {
+        if (flash.success) {
+            showSuccess();
+        }
+    }, [flash.success]);
+
+    useEffect(() => {
+        if (flash.error) {
+            showError();
+        }
+    }, [flash.error]);
 
     const showError = () => {
         Swal.fire({
@@ -81,12 +93,6 @@ export default function Index({ users, user, count, roles, weekly, monthly, year
 
     return (
         <AdminLayout user={user}>
-            {flash.error && (
-                showError()
-            )}
-            {flash.success && (
-                showSuccess()
-            )}
             <Head title="Użytkownicy" />
 
             <h1 className="h1 mb-4">Użytkownicy</h1>

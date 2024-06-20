@@ -50,7 +50,10 @@ export default function UserInfoModal({ showInfo, handleCloseInfo, user }) {
 
                             <p>Adres: <b>{user.address ? user.address : "Brak Adresu"}</b></p>
                             <p>Numer telefonu: <b>{user.phone_number ? user.phone_number : "Brak Numeru Telefonu"}</b></p>
-                            <p>Opis: <b>{user.about ? user.about : "Brak Opisu"}</b></p>
+                            <p>Opis: </p>
+                            <textarea disabled className="form-control" value={user.about ? user.about : "Brak Opisu"}>
+                                
+                            </textarea>
                         </>
                     ) : (
                         <p>Brak danych.</p>
