@@ -51,7 +51,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
             </div>
-            {auth.user && (
+            {auth && (
                 <div className="lower-menu">
                     <Link href="#">
                         <button className="etp-button ps-3 pe-3">
@@ -60,7 +60,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     </Link>
                     <Link
                         className="nav-link"
-                        href={route("profile.index", auth.user.id)}
+                        href={route("profile.index", auth.id)}
                     >
                         <FontAwesomeIcon icon={faUser} /> <p>Profil</p>
                     </Link>
@@ -81,7 +81,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     </Link>
 
                     <div className="more-options mt-auto">
-                        {auth.user.account_type == "teacher" && (
+                        {auth.isTeacher && (
                             <Link
                                 href={route("logout")}
                                 method="post"
@@ -103,10 +103,10 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                 </div>
             )}
             <div className="auth-wrapper">
-                {auth.user ? (
+                {auth ? (
                     <div className="logout-wrapper">
                         <div className="user-profile">
-                            <UserProfile user={auth.user} />
+                            <UserProfile user={auth} />
                         </div>
                         <Link
                             href="#"

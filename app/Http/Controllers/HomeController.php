@@ -8,16 +8,16 @@ use Inertia\Inertia;
 class HomeController extends Controller
 {
     public function index(){
-        $user = auth()->user();
+        $auth = auth()->user();
 
-        if($user){
-            $user->isTeacher = $user->isTeacher();
-            $user->isStudent = $user->isStudent();
-            $user->isAdmin = $user->isAdmin();
+        if($auth){
+            $auth->isTeacher = $auth->isTeacher();
+            $auth->isStudent = $auth->isStudent();
+            $auth->isAdmin = $auth->isAdmin();
         }
         return Inertia::render('Homepage', [
             'appName' => config('app.name', 'Laravel'),
-            'user' => $user,
+            'auth' => $auth,
         ]);
 
     }

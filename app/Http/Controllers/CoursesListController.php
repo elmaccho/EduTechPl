@@ -9,13 +9,15 @@ use Inertia\Inertia;
 class CoursesListController extends Controller
 {
     public function index(CoursesCategory $category){
-        $user = Auth()->user();
-        $user->isTeacher = $user->isTeacher();
-        $user->isStudent = $user->isStudent();
-        $user->isAdmin = $user->isAdmin();
+
+        $auth = Auth()->user();
+        $auth->isTeacher = $auth->isTeacher();
+        $auth->isStudent = $auth->isStudent();
+        $auth->isAdmin = $auth->isAdmin();
+        
         return Inertia::render('CoursesList/Index', [
             'category' => $category,
-            'user' => $user
+            'auth' => $auth
         ]);
     }
 }

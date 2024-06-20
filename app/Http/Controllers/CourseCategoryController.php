@@ -10,14 +10,15 @@ class CourseCategoryController extends Controller
 {
     public function index(){
         $categories = CoursesCategory::all();
-        $user = Auth()->user();
-        $user->isTeacher = $user->isTeacher();
-        $user->isStudent = $user->isStudent();
-        $user->isAdmin = $user->isAdmin();
+
+        $auth = Auth()->user();
+        $auth->isTeacher = $auth->isTeacher();
+        $auth->isStudent = $auth->isStudent();
+        $auth->isAdmin = $auth->isAdmin();
+
         return Inertia::render('Categories/Index', [
             'categories' => $categories,
-            'user' => $user
-
+            'auth' => $auth,
         ]);
     }
 }

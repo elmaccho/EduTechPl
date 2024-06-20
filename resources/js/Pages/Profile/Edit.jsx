@@ -11,15 +11,14 @@ import Preferences from "@/Components/User Settings/Preferences";
 export default function Edit({ auth, appName }) {
     const [selectedForm, setSelectedForm] = useState("info");
 
-    const switchForms = () => {
+    const switchForms = (auth) => {
         switch (selectedForm) {
             case "info":
-                return <PersonalInfo />;
+                return <PersonalInfo user={auth}/>;
             case "preferences":
-                return <Preferences />;
+                return <Preferences/>;
         }
     };
-// 
     return (
         <MainLayout auth={auth} appName={appName}>
             <Head title="Ustawienia profilu" />
@@ -61,7 +60,7 @@ export default function Edit({ auth, appName }) {
                         </div>
                     </button>
                 </div>
-                <div className="settings-forms">{switchForms()}</div>
+                <div className="settings-forms">{switchForms(auth)}</div>
             </div>
         </MainLayout>
     );

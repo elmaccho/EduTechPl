@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { usePage, useForm } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 import InputLabel from "../InputLabel";
 import InputError from "../InputError";
 import UserProfile from "../DefaultProfile";
@@ -9,9 +9,7 @@ import "/resources/css/Profile/personalinfo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-import Swal from "sweetalert2";
-
-export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
+export default function PersonalInfo({ mustVerifyEmail, status, progress, user }) {
     const [preview, setPreview] = useState(null);
 
     const handleImageChange = (e) => {
@@ -21,17 +19,15 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress }) {
         }
     };
 
-    const user = usePage().props.auth.user;
-
     const { data, setData, post, errors, processing, recentlySuccessful } =
         useForm({
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            address: user.address,
-            phone_number: user.phone_number,
+            name: user?.name,
+            surname: user?.surname,
+            email: user?.email,
+            address: user?.address,
+            phone_number: user?.phone_number,
             profile_image_path: "",
-            about: user.about,
+            about: user?.about,
         });
 
     const submit = (e) => {

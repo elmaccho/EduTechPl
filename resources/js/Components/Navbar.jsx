@@ -16,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UserProfile from "./DefaultProfile";
 
-export default function Navbar({ appName, auth, openSideMenu, user }) {
+export default function Navbar({ appName, auth, openSideMenu }) {
     return (
         <nav className="etp-navbar">
             <div className="upper-navbar">
@@ -41,7 +41,7 @@ export default function Navbar({ appName, auth, openSideMenu, user }) {
                     </button>
                 </div>
                 <div className="nav-links">
-                    {auth.user ? (
+                    {auth ? (
                         <>
                             <Link href="#">
                                 <button className="etp-button ps-3 pe-3">
@@ -66,20 +66,20 @@ export default function Navbar({ appName, auth, openSideMenu, user }) {
                                         className="navbar-user-dropdown"
                                         type="button"
                                     >
-                                        <UserProfile user={auth.user}/>
+                                        <UserProfile user={auth}/>
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
                                     <Dropdown.Link
                                         href={route(
                                             "profile.index",
-                                            auth.user.id
+                                            auth.id
                                         )}
                                         className="dropdown-link"
                                     >
                                         Profil
                                     </Dropdown.Link>
-                                    {user.isTeacher && (
+                                    {auth.isTeacher && (
                                         <Dropdown.Link
                                             href="#"
                                             method="post"
@@ -111,7 +111,7 @@ export default function Navbar({ appName, auth, openSideMenu, user }) {
                                     >
                                         Wyloguj się
                                     </Dropdown.Link>
-                                    {user.isAdmin && (
+                                    {auth.isAdmin && (
                                         <Dropdown.Link href={route('adminpanel.index')} className="dropdown-link bg-red-700 text-light">
                                             Panel Administracyjny
                                         </Dropdown.Link>

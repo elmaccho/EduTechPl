@@ -5,9 +5,9 @@ import "/resources/css/Categories/categories.css";
 import MainLayout from "@/Layouts/MainLayout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Index({ categories, auth, appName, user }) {
+export default function Index({ categories, auth, appName }) {
     return (
-        <MainLayout auth={auth} appName={appName} user={user}>
+        <MainLayout auth={auth} appName={appName}>
             <Head title="Kategorie" />
             <div className="categories-wrapper">
                 {categories.map((category) => (
@@ -18,7 +18,7 @@ export default function Index({ categories, auth, appName, user }) {
                     >
                         <div className="category-box">
                             <img
-                                src="https://picsum.photos/300/250?random=1"
+                                src={`/storage/${category.image_path}`}
                                 className="category-image"
                             />
                             <div className="row m-0 text-center">
