@@ -10,7 +10,8 @@ class CoursesCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'image_path',
     ];
 
 }
