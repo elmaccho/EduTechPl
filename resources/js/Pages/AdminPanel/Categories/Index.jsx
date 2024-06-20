@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import react, { useEffect, useState } from "react";
 
 import AdminLayout from "@/Layouts/AdminLayout";
 
@@ -12,9 +12,10 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo, faPencil, faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import CategoryInfoModal from "@/Components/Admin/CategoryInfoModal";
 
 
-export default function Index({ user, courses, coursesCount }) {
+export default function Index({ user, categories, categoriesCount }) {
     const { flash } = usePage().props;
 
     useEffect(() => {
@@ -22,6 +23,20 @@ export default function Index({ user, courses, coursesCount }) {
             showSuccess();
         }
     }, [flash.success]);
+
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+    // modal info
+    const [showInfo, setShowInfo] = useState(false);
+
+    const handleCloseInfo = () => setShowInfo(false);
+    const handleShowInfo = () => setShowInfo(true);
+
+    const showInfoModal = (category) => {
+        setSelectedCategory(category);
+        handleShowInfo();
+    };
+    // modal info
 
     const showSuccess = () => {
         Swal.fire({
@@ -52,7 +67,7 @@ export default function Index({ user, courses, coursesCount }) {
                         }}
                     >
                         <PieChart
-                            data={[{ value: coursesCount, color: "#4CAF50" }]}
+                            data={[{ value: categoriesCount, color: "#4CAF50" }]}
                             lineWidth={15}
                             startAngle={-90}
                             animate={true}
@@ -68,7 +83,7 @@ export default function Index({ user, courses, coursesCount }) {
                                 width: "100%",
                             }}
                         >
-                            {coursesCount}
+                            {categoriesCount}
                         </div>
                     </div>
                 </div>
@@ -104,63 +119,68 @@ export default function Index({ user, courses, coursesCount }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {courses.data.map((course, index) => (
-                            <tr key={course.id}>
+                        {categories.data.map((category, index) => (
+                            <tr key={category.id} style={{ height: "100px" }}>
                                 <th scope="row">{index + 1}</th>
-                                <td>{course.name}</td>
-                                <td>{course.name}</td>
+                                <td>
+                                    <img src={`/storage/${category.image_path}`} alt="" style={{ width: "80px", height: "80px", objectFit: "cover" }}/>
+                                </td>
+                                <td style={{ display: "flex", flexWrap: "wrap", height: "100.5px", alignItems: 'center'}}>
+                                    {category.name}
+                                </td>
                                 <td
-                                    className="d-flex gap-2 justify-content-end"
-                                    style={{ height: "52.5px" }}
+                                    style={{ height: "80px" }}
                                 >
-                                    <Button
-                                        className="btn btn-primary btn-sm"
-                                        onClick={() => {
-                                            // showInfoModal(user);
-                                        }}
-                                        style={{
-                                            width: "35px",
-                                            height: "35px",
-                                        }}
-                                    >
-                                        <FontAwesomeIcon icon={faInfo} />
-                                    </Button>
-                                    <Link
-                                        className="btn btn-success btn-sm d-flex justify-content-center align-items-center"
-                                        style={{
-                                            width: "35px",
-                                            height: "35px",
-                                        }}
-                                        href={route(
-                                            "adminpanel.users.edit",
-                                            user.id
-                                        )}
-                                    >
-                                        <FontAwesomeIcon icon={faPencil} />
-                                    </Link>
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        style={{
-                                            width: "35px",
-                                            height: "35px",
-                                        }}
-                                        onClick={() => deleteUser(user)}
-                                    >
-                                        <FontAwesomeIcon icon={faTrashCan} />
-                                    </button>
+                                    <div className="d-flex gap-2 justify-content-end align-items-center" style={{ height: '100%' }}>
+                                        <Button
+                                            className="btn btn-primary btn-sm"
+                                            onClick={() => {
+                                                showInfoModal(category);
+                                            }}
+                                            style={{
+                                                width: "35px",
+                                                height: "35px",
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon={faInfo} />
+                                        </Button>
+                                        <Link
+                                            className="btn btn-success btn-sm d-flex justify-content-center align-items-center"
+                                            style={{
+                                                width: "35px",
+                                                height: "35px",
+                                            }}
+                                            href={route(
+                                                "adminpanel.categories.edit",
+                                                category.id
+                                            )}
+                                        >
+                                            <FontAwesomeIcon icon={faPencil} />
+                                        </Link>
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            style={{
+                                                width: "35px",
+                                                height: "35px",
+                                            }}
+                                            onClick={() => deleteUser(user)}
+                                        >
+                                            <FontAwesomeIcon icon={faTrashCan} />
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <Pagination links={courses.links} />
+                <Pagination links={categories.links} />
             </div>
 
-            {/* <UserInfoModal
+            <CategoryInfoModal
                 showInfo={showInfo}
                 handleCloseInfo={handleCloseInfo}
-                user={selectedUser}
-            /> */}
+                category={selectedCategory}
+            />
         </AdminLayout>
     );
 }

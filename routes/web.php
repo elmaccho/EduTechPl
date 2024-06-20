@@ -49,7 +49,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/kategorie', [CategoryController::class, 'index'])->name('adminpanel.categories');
         Route::get('/kategorie/dodaj', [CategoryController::class, 'create'])->name('adminpanel.categories.create');
         Route::post('/kategorie/dodaj', [CategoryController::class, 'store'])->name('adminpanel.categories.store');
-
+        Route::get('/kategorie/edytuj/{category}', [CategoryController::class, 'edit'])->name('adminpanel.categories.edit');
+        Route::post('/kategorie/edytuj/{category}', [CategoryController::class, 'update'])->name('adminpanel.categories.update');
+        
         Route::get('/notatki', [NotesController::class, 'index'])->name('adminpanel.notes');
 
         Route::get('/slider', [SliderController::class, 'index'])->name('adminpanel.slider');

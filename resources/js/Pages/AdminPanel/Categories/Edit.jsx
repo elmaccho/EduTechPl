@@ -1,13 +1,18 @@
-import InputError from "@/Components/InputError";
-import AdminLayout from "@/Layouts/AdminLayout";
-import { faImage, faPlus, faTurnUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Head, Link, useForm } from "@inertiajs/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-export default function Create({ auth }) {
-    const { data, setData, post, errors } = useForm({
-        name: "",
+import AdminLayout from "@/Layouts/AdminLayout";
+
+import { Head, Link, useForm } from "@inertiajs/react";
+
+import { faCheck, faPlus, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import InputError from "@/Components/InputError";
+
+
+export default function Edit({ auth, category }) {
+    const { data, setData, reset, post, errors, processing } = useForm({
+        name: category.name || "",
         image_path: "",
     });
 
@@ -23,13 +28,16 @@ export default function Create({ auth }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("adminpanel.categories.store"));
+        post(route("adminpanel.categories.update", category.id), {
+            _method: "put",
+        });
     };
+
     return (
         <AdminLayout user={auth}>
-            <Head title="Dodaj kategorię" />
-            <h1 className="h1 mb-4">Dodaj kategorię</h1>
-            <div className="row m-0 mb-5">
+            <Head title="Edytuj kategorię" />
+            <h1 className="h1 mb-4">Edytuj kategorię</h1>
+            <div className="row m-0 mb-4">
                 <Link
                     className="d-flex gap-2 align-items-center btn btn-primary w-max"
                     href={route("adminpanel.categories")}
@@ -65,16 +73,10 @@ export default function Create({ auth }) {
                         {preview ? (
                             <img src={preview} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
                         ) : (
-                            <p className="d-flex flex-column">
-                                <FontAwesomeIcon
-                                    icon={faPlus}
-                                    style={{
-                                        color: "#0D6EFD",
-                                        fontSize: "70px",
-                                    }}
-                                />
-                                Dodaj zdjęcie
-                            </p>
+                            <span className="d-flex justify-content-center align-items-center relative" style={{ width: "100%", height: "100%"}}>
+                                <span className="absolute btn btn-primary btn-sm bottom-2">Zmień zdjęcie</span>
+                                <img src={`/storage/${category.image_path}`} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+                            </span>
                         )}
                     </label>
                     <InputError message={errors.image_path} />
@@ -85,13 +87,14 @@ export default function Create({ auth }) {
                         type="text"
                         name="name"
                         id="name"
+                        value={data.name}
                         onChange={(e) => setData("name", e.target.value)}
                         placeholder="Nazwa kategorii"
                         required
                     />
                     <InputError message={errors.name} />
                 </div>
-                <button type="submit" className="btn btn-primary">Dodaj</button>
+                <button type="submit" className="btn btn-primary">Zapisz</button>
             </form>
         </AdminLayout>
     );

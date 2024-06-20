@@ -4,7 +4,7 @@ import AdminLayout from "@/Layouts/AdminLayout";
 
 import { Head, Link, useForm } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faImage, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import InputError from "@/Components/InputError";
 import UserProfile from "@/Components/DefaultProfile";
 
@@ -39,7 +39,8 @@ export default function Edit({ user, auth, roles }) {
 
     return (
         <AdminLayout user={auth}>
-            <Head title="Użytkownicy" />
+            <Head title="Edytuj użytkownika" />
+            <h1 className="h1 mb-4">Edytuj użytkownika</h1>
             <div className="row m-0 mb-4">
                 <Link
                     className="d-flex gap-2 align-items-center btn btn-primary w-max"
@@ -206,7 +207,7 @@ export default function Edit({ user, auth, roles }) {
                         type="submit"
                         disabled={processing}
                     >
-                        Zapisz
+                        Zapisz <FontAwesomeIcon icon={faCheck} />
                     </button>
                 </div>
             </form>

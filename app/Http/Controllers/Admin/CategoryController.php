@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\CoursesCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -17,13 +19,13 @@ class CategoryController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $courses = CoursesCategory::paginate(10);
-        $coursesCount = CoursesCategory::all()->count();
+        $categories = CoursesCategory::paginate(10);
+        $categoriesCount = CoursesCategory::all()->count();
 
         return Inertia('AdminPanel/Categories/Index', [
             'user' => $user,
-            'coursesCount' => $coursesCount,
-            'courses' => $courses,
+            'categoriesCount' => $categoriesCount,
+            'categories' => $categories,
         ]);
     }
 
@@ -65,17 +67,37 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(CoursesCategory $category)
     {
-        //
+        $auth = auth()->user();
+
+        return Inertia('AdminPanel/Categories/Edit', [
+            'category' => $category,
+            'auth' => $auth,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryUpdateRequest $request, CoursesCategory $category)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image_path')) {
+            if ($category->image_path) {
+                Storage::delete($category->image_path);
+            }
+
+            $data['image_path'] = $request->file('image_path')->store('category_image');
+        } else {
+            unset($data['image_path']);
+        }
+
+        $category->fill($data);
+        $category->save();
+
+        return Redirect::route('adminpanel.categories')->with('success_message', 'Zaktualizowano dane!');
     }
 
     /**
