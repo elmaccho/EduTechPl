@@ -56,6 +56,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/notatki', [NotesController::class, 'index'])->name('adminpanel.notes');
 
         Route::get('/slider', [SliderController::class, 'index'])->name('adminpanel.slider');
+        Route::delete('/slider/{slider}', [SliderController::class, 'destroy'])->name('adminpanel.slider.delete');
+        Route::get('/slider/dodaj', [SliderController::class, 'create'])->name('adminpanel.slider.create');
+        Route::post('/slider/dodaj', [SliderController::class, 'store'])->name('adminpanel.slider.store');
+        Route::get('/slider/edytuj/{slider}', [SliderController::class, 'edit'])->name('adminpanel.slider.edit');
+        Route::post('/slider/edytuj/{slider}', [SliderController::class, 'update'])->name('adminpanel.slider.update');
 
     });
 });
