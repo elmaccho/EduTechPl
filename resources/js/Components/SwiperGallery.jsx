@@ -11,7 +11,7 @@ import slide1 from "/public/img/swiper gallery/pexels-tirachard-kumtanom-112571-
 import slide2 from "/public/img/swiper gallery/pexels-george-dolgikh-551816-1310532.jpg";
 import slide3 from "/public/img/swiper gallery/pexels-divinetechygirl-1181233.jpg";
 
-export default function SwiperGallery({}) {
+export default function SwiperGallery({ sliders }) {
     return (
         <Swiper
             slidesPerView={1}
@@ -24,44 +24,20 @@ export default function SwiperGallery({}) {
             modules={[Pagination, Navigation]}
             className="mySwiper mb-5"
         >
-            <SwiperSlide>
-                <img src={slide1} alt="slide1" />
-                <div className="slide-info slide1-info">
-                    <p className="h4">
-                        <b>
-                            Zaufało nam już ponad 200 000 studentów z całego
-                            świata.
-                        </b>
-                    </p>
-                    <p>Zacznij naukę już dziś!</p>
-                    <p>Z kodem <b>tryMe</b> 30% taniej na pierwszy kurs</p>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={slide2} alt="slide2" />
-                <div className="slide-info slide2-info">
-                    <p className="h4">
-                        <b>
-                            Ucz się w dowolnym miejscu i czasie!
-                        </b>
-                    </p>
-                    <p>Dostęp do materiałów 24/7 na komputerze, tablecie lub smartfonie.</p>
-                    <p>Indywidualne podejście i wsparcie na każdym etapie nauki.</p>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={slide3} alt="slide3" />
-                <div className="slide-info slide3-info">
-                    <p className="h4">
-                        <b>
-                            Zaufało nam już ponad 200 000 studentów z całego
-                            świata.
-                        </b>
-                    </p>
-                    <p>Zacznij naukę już dziś!</p>
-                    <p>Z kodem <b>tryMe</b> 30% taniej na pierwszy kurs</p>
-                </div>
-            </SwiperSlide>
+            {sliders && sliders.map((slider, index) => (
+                <SwiperSlide key={slider.id}>
+                    <img src={`/storage/${slider.image_path}`} alt={slider + index} />
+                    <div className="slide-info slide1-info">
+                        <p className="h4">
+                            <b>
+                                {slider.title}
+                            </b>
+                        </p>
+                        <p>{slider.text1}</p>
+                        <p>{slider.text2}</p>
+                    </div>
+                </SwiperSlide>
+            ))}
         </Swiper>
     );
 }
