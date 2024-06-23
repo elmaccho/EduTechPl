@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\CoursesCategory;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -12,13 +13,10 @@ class CourseCategoryController extends Controller
         $categories = CoursesCategory::all();
 
         $auth = Auth()->user();
-        $auth->isTeacher = $auth->isTeacher();
-        $auth->isStudent = $auth->isStudent();
-        $auth->isAdmin = $auth->isAdmin();
 
         return Inertia::render('Categories/Index', [
             'categories' => $categories,
-            'auth' => $auth,
+            'auth' => new UserResource($auth),
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -18,12 +19,8 @@ class ProfileController extends Controller
 {
     public function index(User $user){
         
-        $user->isTeacher = $user->isTeacher();
-        $user->isStudent = $user->isStudent();
-        $user->isAdmin = $user->isAdmin();
-
         return Inertia::render('Profile/Index', [
-            'user' => $user
+            'user' => new UserResource($user),
         ]);
     }
     /**
@@ -32,14 +29,11 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         $auth = auth()->user();
-        $auth->isTeacher = $auth->isTeacher();
-        $auth->isStudent = $auth->isStudent();
-        $auth->isAdmin = $auth->isAdmin();
 
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
-            'auth' => $auth,
+            'auth' => new UserResource($auth),
         ]);
     }
 

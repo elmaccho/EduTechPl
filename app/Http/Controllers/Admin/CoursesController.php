@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseStoreRequest;
+use App\Http\Resources\CoursesResource;
 use App\Models\Course;
 use App\Models\CoursesCategory;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class CoursesController extends Controller
 
         return Inertia('AdminPanel/Courses/Index', [
             'user' => $user,
-            'courses' => $courses,
+            'courses' => CoursesResource::collection($courses),
             'coursesCount' => $coursesCount,
         ]);
     }

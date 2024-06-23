@@ -160,7 +160,7 @@ export default function Index({ user, courses, coursesCount }) {
                                     {course.title}
                                 </td>
                                 <td>
-                                    {course.teacher_id}
+                                    {course.teacher}
                                 </td>
                                 <td>
                                     {course.category_id}
@@ -225,7 +225,7 @@ export default function Index({ user, courses, coursesCount }) {
                         ))}
                     </tbody>
                 </table>
-                <Pagination links={courses.links} />
+                {/* <Pagination links={courses.links} /> */}
             </div>
 
             <CourseInfoModal
