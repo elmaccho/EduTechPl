@@ -67,10 +67,9 @@ class ProfileController extends Controller
             $user->email_verified_at = null;
         }
     
-        Alert::success('Success Title', 'Success Message');
         $user->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::route('profile.edit')->with('success_message', 'Zaktualizowano dane!');
     }
     
     /**

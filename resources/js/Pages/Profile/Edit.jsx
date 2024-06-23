@@ -1,12 +1,13 @@
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import MainLayout from "@/Layouts/MainLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "/resources/css/Profile/edit.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PersonalInfo from "@/Components/User Settings/PersonalInfo";
 import Preferences from "@/Components/User Settings/Preferences";
+import Swal from "sweetalert2";
 
 export default function Edit({ auth, appName }) {
     const [selectedForm, setSelectedForm] = useState("info");
@@ -19,6 +20,28 @@ export default function Edit({ auth, appName }) {
                 return <Preferences/>;
         }
     };
+
+    const { flash } = usePage().props;
+
+    useEffect(() => {
+        if (flash.success) {
+            showSuccess();
+        }
+    });
+
+    const showSuccess = () => {
+        Swal.fire({
+            title: "Sukces!",
+            text: flash.success,
+            icon: "success",
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1200,
+            timerProgressBar: true,
+        });
+    };
+    
+    
     return (
         <MainLayout auth={auth} appName={appName}>
             <Head title="Ustawienia profilu" />
