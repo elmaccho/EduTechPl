@@ -339,7 +339,7 @@ export default function Index({ users, user, count, roles, weekly, monthly, year
                         ))}
                     </tbody>
                 </table>
-                <Pagination links={users.links} />
+                <Pagination links={users.meta.links} />
             </div>
 
             <UserInfoModal

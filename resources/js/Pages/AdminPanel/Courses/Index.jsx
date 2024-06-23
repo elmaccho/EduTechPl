@@ -70,7 +70,6 @@ export default function Index({ user, courses, coursesCount }) {
             timerProgressBar: true,
         });
     };
-
     return (
         <AdminLayout user={user}>
             <Head title="Kursy" />
@@ -156,15 +155,15 @@ export default function Index({ user, courses, coursesCount }) {
                                         }}
                                     />
                                 </td>
+                                <td>{course.title}</td>
                                 <td>
-                                    {course.title}
+                                    <Link href={route('profile.index', course.teacher.id)}>
+                                        {course.teacher.name}
+                                        {" "}
+                                        {course.teacher.surname}
+                                    </Link>
                                 </td>
-                                <td>
-                                    {course.teacher}
-                                </td>
-                                <td>
-                                    {course.category_id}
-                                </td>
+                                <td>{course.category}</td>
                                 <td
                                     style={{
                                         display: "flex",
@@ -211,9 +210,7 @@ export default function Index({ user, courses, coursesCount }) {
                                                 width: "35px",
                                                 height: "35px",
                                             }}
-                                            onClick={() =>
-                                                deleteCourse(course)
-                                            }
+                                            onClick={() => deleteCourse(course)}
                                         >
                                             <FontAwesomeIcon
                                                 icon={faTrashCan}
@@ -225,7 +222,7 @@ export default function Index({ user, courses, coursesCount }) {
                         ))}
                     </tbody>
                 </table>
-                {/* <Pagination links={courses.links} /> */}
+                <Pagination links={courses.meta.links} />
             </div>
 
             <CourseInfoModal

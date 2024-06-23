@@ -5,17 +5,6 @@ import UserProfile from "../DefaultProfile";
 
 export default function UserInfoModal({ showInfo, handleCloseInfo, user }) {
 
-    const getStatus = () => {
-        if(user.account_type == 'teacher'){
-            let account_type = "Nauczyciel";
-
-            return account_type
-        } else if(user.account_type == 'student'){
-            let account_type = "Uczeń"
-
-            return account_type
-        }
-    }
     const getRole = () => {
         if(user.role == 'admin'){
             return (<span className="text-danger">Admin</span>)
@@ -43,7 +32,7 @@ export default function UserInfoModal({ showInfo, handleCloseInfo, user }) {
                             <p>Imię: {user.name}</p>
                             <p>Nazwisko: {user.surname}</p>
                             <p>Email: {user.email}</p>
-                            <p>Typ konta: <b>{getStatus()}</b></p>
+                            <p>Typ konta: <b>{user.accountType}</b></p>
                             <p>Ranga: <b className="text-uppercase">{getRole()}</b></p>
 
                             <hr className="mt-4 mb-4"/>

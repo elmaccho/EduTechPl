@@ -20,10 +20,11 @@ class CoursesController extends Controller
     {
         $user = auth()->user();
 
-        $courses = Course::paginate(10);
-        $coursesCount = Course::all()->count();
+        // $course = Course::find(1);
+        // dd($course->teacher->user->name);
 
-        
+        $courses = Course::paginate(10);
+        $coursesCount = Course::all()->count();      
 
         return Inertia('AdminPanel/Courses/Index', [
             'user' => $user,

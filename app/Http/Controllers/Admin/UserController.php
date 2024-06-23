@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\UserRole;
 use Carbon\Carbon;
@@ -36,7 +37,7 @@ class UserController extends Controller
         $yearly = User::whereBetween('created_at', [Carbon::now()->startOfYear(), Carbon::now()->endOfYear()])->count();
 
         return Inertia('AdminPanel/Users/Index', [
-            'users' => $users,
+            'users' => UserResource::collection($users),
             'user' => $auth,
             'count' => $count,
             'roles' => $roles,

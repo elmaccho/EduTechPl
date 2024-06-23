@@ -13,7 +13,7 @@ import CompletedCourses from "@/Components/Profile/CompletedCourses";
 
 export default function Index({ user }) {
     const [content, setContent] = useState("profile");
-
+    console.log(user);
     return (
         <MainLayout auth={user}>
             <Head title={`Profil ${user.name} ${user.surname}`} />
@@ -30,12 +30,9 @@ export default function Index({ user }) {
                                 {user.name} {user.surname}
                             </b>
                         </h2>
-                        {user.isTeacher && (
-                            <h3 className="text-light">Nauczyciel</h3>
-                        )}
-                        {user.isStudent && (
-                            <h3 className="text-light">Uczeń</h3>
-                        )}
+                        <h3 className="text-light">
+                            {user.accountType}
+                        </h3>
                     </div>
                 </div>
                 <nav className="profile-nav">

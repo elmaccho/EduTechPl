@@ -16,6 +16,6 @@ class CoursesCategory extends Model
 
     public function course()
     {
-        $this->hasMany(Course::class);
+        $this->belongsTo(Course::class);
     }
 }

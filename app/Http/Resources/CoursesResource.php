@@ -22,8 +22,8 @@ class CoursesResource extends JsonResource
             'image_path' => $this->image_path,
             'title' => $this->title,
             'description' => $this->description,
-            'category_id' => $this->category_id,
-            'teacher' => new UserResource($this->teacher),
+            'category' => $this->category->name,
+            'teacher' => $this->teacher->user,
             'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
         ];
     }
