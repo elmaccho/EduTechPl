@@ -14,4 +14,8 @@ class CoursesCategory extends Model
         'image_path',
     ];
 
+    public function course()
+    {
+        $this->hasMany(Course::class);
+    }
 }

@@ -13,7 +13,12 @@ class Teacher extends Model
         'user_id'
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->hasMany(User::class);
+    }
+    public function course()
+    {
+        return $this->hasMany(Course::class);
     }
 }

@@ -45,6 +45,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/uzytkownicy/edytuj/{user}', [UserController::class, 'update'])->name('adminpanel.users.update');
 
         Route::get('/kursy', [CoursesController::class, 'index'])->name('adminpanel.courses');
+        Route::delete('/kursy/{course}', [CoursesController::class, 'destroy'])->name('adminpanel.course.delete');
+        Route::get('/kursy/dodaj', [CoursesController::class, 'create'])->name('adminpanel.course.create');
+        Route::post('/kursy/dodaj', [CoursesController::class, 'store'])->name('adminpanel.course.store');
+        Route::get('/kursy/edytuj/{course}', [CoursesController::class, 'edit'])->name('adminpanel.course.edit');
+        Route::post('/kursy/edytuj/{course}', [CoursesController::class, 'update'])->name('adminpanel.course.update');
 
         Route::get('/kategorie', [CategoryController::class, 'index'])->name('adminpanel.categories');
         Route::delete('/kategorie/{category}', [CategoryController::class, 'destroy'])->name('adminpanel.categories.delete');
