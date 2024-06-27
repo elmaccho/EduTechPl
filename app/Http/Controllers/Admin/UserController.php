@@ -7,7 +7,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use App\UserRole;
+use App\UserRoleEnum;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -29,7 +29,7 @@ class UserController extends Controller
         $auth = auth()->user();
 
         $users = User::paginate(10);
-        $roles = UserRole::cases();
+        $roles = UserRoleEnum::cases();
 
         $count = User::count();
         $weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
@@ -77,7 +77,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $auth = auth()->user();
-        $roles = UserRole::cases();
+        $roles = UserRoleEnum::cases();
 
         return Inertia('AdminPanel/Users/Edit', [
             'user' => $user,

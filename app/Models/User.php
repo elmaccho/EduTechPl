@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\UserRole;
+use App\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -79,6 +79,6 @@ class User extends Authenticatable
         return $this->student()->exists();
     }
     public function isAdmin(){
-        return $this->role == UserRole::ADMIN->value;
+        return $this->role == UserRoleEnum::ADMIN->value;
     }
 }

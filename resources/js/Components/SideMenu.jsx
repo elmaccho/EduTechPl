@@ -83,9 +83,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                     <div className="more-options mt-auto">
                         {auth.isTeacher && (
                             <Link
-                                href={route("logout")}
-                                method="post"
-                                as="button"
+                                href={route('course.create')}
                                 className="nav-link"
                             >
                                 <p>Dodaj Kurs</p>

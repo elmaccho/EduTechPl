@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\Course;
+use Faker\Provider\ar_EG\Internet;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,7 +23,11 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $auth = auth()->user();
+
+        return Inertia('Course/Create', [
+            'auth' => new UserResource($auth),
+        ]);
     }
 
     /**
@@ -40,7 +46,7 @@ class CourseController extends Controller
         $auth = auth()->user();
 
         return Inertia('Course/Show', [
-            'auth' => $auth,
+            'auth' => new UserResource($auth),
             'course' => $course,
         ]);
     }

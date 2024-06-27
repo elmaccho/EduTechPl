@@ -81,9 +81,7 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                     </Dropdown.Link>
                                     {auth.isTeacher && (
                                         <Dropdown.Link
-                                            href="#"
-                                            method="post"
-                                            as="button"
+                                            href={route('course.create')}
                                             className="dropdown-link"
                                         >
                                             Dodaj Kurs
@@ -91,8 +89,6 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                     )}
                                     <Dropdown.Link
                                         href="#"
-                                        method="post"
-                                        as="button"
                                         className="dropdown-link"
                                     >
                                         Dodaj notatki

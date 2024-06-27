@@ -48,7 +48,7 @@ export default function TopCourses() {
                      }}
                 >
                     <SwiperSlide>
-                        <Link href={route('course.show')} className="top-card">
+                        <Link href={route('course.show', 1)} className="top-card">
                             <div className="top-card-img">
                                 <img src={card1img} alt="" />
                             </div>
@@ -105,7 +105,7 @@ export default function TopCourses() {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <Link href={route('course.show')} className="top-card">
+                        <Link href={route('course.show', 1)} className="top-card">
                             <div className="top-card-img">
                                 <img src={card2img} alt="" />
                             </div>
@@ -162,7 +162,7 @@ export default function TopCourses() {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <Link href={route('course.show')} className="top-card">
+                        <Link href={route('course.show', 1)} className="top-card">
                             <div className="top-card-img">
                                 <img src={card3img} alt="" />
                             </div>
@@ -219,7 +219,7 @@ export default function TopCourses() {
                     </SwiperSlide>
                     
                     <SwiperSlide>
-                        <Link href={route('course.show')} className="top-card">
+                        <Link href={route('course.show', 1)} className="top-card">
                             <div className="top-card-img">
                                 <img src={card4img} alt="" />
                             </div>
@@ -276,7 +276,7 @@ export default function TopCourses() {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <Link href={route('course.show')} className="top-card">
+                        <Link href={route('course.show', 1)} className="top-card">
                             <div className="top-card-img">
                                 <img src={card5img} alt="" />
                             </div>
