@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\CourseCategoryController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CoursesListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
+    // panel administracyjny
     Route::middleware('admin')->prefix('panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'index'])->name('adminpanel.index');
 
@@ -66,10 +68,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/slider/dodaj', [SliderController::class, 'store'])->name('adminpanel.slider.store');
         Route::get('/slider/edytuj/{slider}', [SliderController::class, 'edit'])->name('adminpanel.slider.edit');
         Route::post('/slider/edytuj/{slider}', [SliderController::class, 'update'])->name('adminpanel.slider.update');
-
     });
 });
 
+Route::get('/kurs/{course}', [CourseController::class, 'show'])->name('course.show');
 
 Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/kategorie', [CourseCategoryController::class, 'index'])->name('coursecategory.index');

@@ -23,8 +23,8 @@ export default function Navbar({ user, handleOpenSideMenu, isOpened }) {
             <div className="navbar-right">
                 <Dropdown>
                     <Dropdown.Trigger>
-                        <button className="navbar-user-dropdown" type="button">
-                            <div className="navbar-user-image">
+                        <button className="admin-navbar-user-dropdown" type="button">
+                            <div className="admin-navbar-user-image">
                                 <UserProfile user={user} />
                             </div>
                             <p>

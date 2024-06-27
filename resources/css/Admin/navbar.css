@@ -18,11 +18,11 @@
 
     z-index: 6;
 }
-.navbar-user-image{
+.admin-navbar-user-image{
     width: 35px;
     height: 35px;
 }
-.navbar-user-dropdown{
+.admin-navbar-user-dropdown{
     display: flex;
     align-items: center;
     gap: 10px;
