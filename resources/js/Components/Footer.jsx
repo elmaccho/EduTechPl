@@ -5,7 +5,11 @@ import { Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faLinkedin, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
+import { useTranslation } from "react-i18next";
+
 export default function Footer({ appName}) {
+    const { t } = useTranslation();
+    
     return (
         <footer>
             <div className="footer-col footer-col1">
@@ -18,15 +22,15 @@ export default function Footer({ appName}) {
                 <p className="text-light">biuro@edutech.pl</p>
             </div>
             <div className="footer-col footer-col2">
-                <Link>O nas</Link>
-                <Link>Pobierz aplikację</Link>
-                <Link>Skontaktuj się z nami</Link>
+                <Link>{t('footer.about_us')}</Link>
+                <Link>{t('footer.download_app')}</Link>
+                <Link>{t('footer.contact_us')}</Link>
             </div>
             <div className="footer-col footer-col3">
-                <Link>Warunki</Link>
-                <Link>Polityka prywatności</Link>
-                <Link>Pomoc techniczna</Link>
-                <Link>Ustawienia plików cookie</Link>
+                <Link>{t('footer.terms')}</Link>
+                <Link>{t('footer.privacy_policy')}</Link>
+                <Link>{t('footer.tech_support')}</Link>
+                <Link>{t('footer.cookie_settings')}</Link>
             </div>
             <div className="footer-col footer-col4">
                 <Link>

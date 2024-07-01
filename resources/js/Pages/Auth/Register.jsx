@@ -15,6 +15,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { CSSTransition } from "react-transition-group";
 
+import { useTranslation } from "react-i18next";
+
+
 export default function Register() {
     const [accountType, setAccountType] = useState("");
     const [showForm, setShowForm] = useState(false);
@@ -52,6 +55,8 @@ export default function Register() {
         post(route("register"));
     };
 
+    const { t } = useTranslation();
+
     return (
         <div className="register-container min-h-screen">
             <Head title="Rejestracja" />
@@ -62,7 +67,7 @@ export default function Register() {
                         <div className="account-type mb-5">
                             <div className="row text-center">
                                 <p className="text-light h2 mb-4">
-                                    Wybierz typ konta
+                                    {t('inputs.account_type')}
                                 </p>
                             </div>
                             <div className="types-wrapper">
@@ -82,7 +87,7 @@ export default function Register() {
                                             alt="Student mascot logo"
                                         />
                                     </div>
-                                    <p>Uczeń</p>
+                                    <p>{t('register.student')}</p>
                                 </div>
                                 <div
                                     className={`type-container teacher ${
@@ -100,7 +105,7 @@ export default function Register() {
                                             alt="Teacher mascot logo"
                                         />
                                     </div>
-                                    <p>Nauczyciel</p>
+                                    <p>{t('register.teacher')}</p>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +117,7 @@ export default function Register() {
                                     handleAccountTypeClick(data.account_type)
                                 }
                             >
-                                Dalej
+                                {t('buttons.next')}
                             </button>
                         </div>
                     </div>
@@ -126,7 +131,7 @@ export default function Register() {
                         <div className="register-form">
                             <div className="row text-center mb-3">
                                 <p className="h2 text-light">
-                                    Dokończ rejestrację
+                                    {t('register.complete_register')}
                                 </p>
                             </div>
                             <div className="name-surname-wrapper mb-3">
@@ -136,30 +141,26 @@ export default function Register() {
                                     name="name"
                                     id="name"
                                     autoComplete="name"
-                                    placeholder="Imię"
+                                    placeholder={t('inputs.first_name')}
                                     value={data.name}
                                     onChange={(e) =>
                                         setData("name", e.target.value)
                                     }
                                 />
-                                <InputError
-                                    message={errors.name}
-                                />
+                                <InputError message={errors.name} />
                                 <input
                                     className="etp-input"
                                     type="text"
                                     name="surname"
                                     id="surname"
                                     autoComplete="lastname"
-                                    placeholder="Nazwisko"
+                                    placeholder={t('inputs.last_name')}
                                     value={data.surname}
                                     onChange={(e) =>
                                         setData("surname", e.target.value)
                                     }
                                 />
-                                <InputError
-                                    message={errors.surname}
-                                />
+                                <InputError message={errors.surname} />
                             </div>
                             <input
                                 type="text"
@@ -182,7 +183,7 @@ export default function Register() {
                                 type="password"
                                 name="password"
                                 id="password"
-                                placeholder="Hasło"
+                                placeholder={t('inputs.password')}
                                 className="mb-3 etp-input"
                                 value={data.password}
                                 autoComplete="current-password"
@@ -209,7 +210,7 @@ export default function Register() {
                                     )
                                 }
                                 required
-                                placeholder="Powtórz hasło"
+                                placeholder={t('inputs.r_password')}
                             />
 
                             <InputError
@@ -219,11 +220,11 @@ export default function Register() {
 
                             <div className="row m-0 d-flex justify-content-center mb-5">
                                 <button type="submit" className="etp-button">
-                                    Zarejestruj się
+                                {t('buttons.register')}
                                 </button>
                             </div>
                             <div className="row m-0 mb-4">
-                                <span className="br-text">Lub</span>
+                                <span className="br-text">{t('register.or')}</span>
                             </div>
 
                             <div className="row m-0 mb-2">
@@ -236,7 +237,7 @@ export default function Register() {
                                         icon={faFacebook}
                                         className="icon"
                                     />{" "}
-                                    Zarejestruj się przez Facebooka
+                                    {t('register.register_through_facebook')}
                                 </a>
                             </div>
                             <div className="row m-0 mb-2">
@@ -249,7 +250,7 @@ export default function Register() {
                                         icon={faGoogle}
                                         className="icon"
                                     />{" "}
-                                    Zarejestruj się przez Google
+                                    {t('register.register_through_google')}
                                 </a>
                             </div>
                             <div className="row m-0 mb-2">
@@ -262,7 +263,7 @@ export default function Register() {
                                         icon={faApple}
                                         className="icon"
                                     />{" "}
-                                    Zarejestruj się przez Apple
+                                    {t('register.register_through_apple')}
                                 </a>
                             </div>
                         </div>

@@ -15,8 +15,11 @@ import {
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import UserProfile from "./DefaultProfile";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar({ appName, auth, openSideMenu }) {
+    const { t } = useTranslation();
+
     return (
         <nav className="etp-navbar">
             <div className="upper-navbar">
@@ -34,7 +37,7 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                         type="text"
                         name="search-bar"
                         id="search-bar"
-                        placeholder="Szukaj kursów"
+                        placeholder={t("inputs.search")}
                     />
                     <button className="search-button">
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -43,11 +46,6 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                 <div className="nav-links">
                     {auth ? (
                         <>
-                            <Link href="#">
-                                <button className="etp-button ps-3 pe-3">
-                                    Twoje kursy
-                                </button>
-                            </Link>
                             <Link className="nav-link">
                                 <FontAwesomeIcon icon={faCalendar} />
                             </Link>
@@ -66,38 +64,35 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                         className="navbar-user-dropdown"
                                         type="button"
                                     >
-                                        <UserProfile user={auth}/>
+                                        <UserProfile user={auth} />
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
                                     <Dropdown.Link
-                                        href={route(
-                                            "profile.index",
-                                            auth.id
-                                        )}
+                                        href={route("profile.index", auth.id)}
                                         className="dropdown-link"
                                     >
-                                        Profil
+                                        {t("nav.profile")}
                                     </Dropdown.Link>
                                     {auth.isTeacher && (
                                         <Dropdown.Link
-                                            href={route('course.create')}
+                                            href={route("course.create")}
                                             className="dropdown-link"
                                         >
-                                            Dodaj Kurs
+                                            {t("nav.add_course")}
                                         </Dropdown.Link>
                                     )}
                                     <Dropdown.Link
                                         href="#"
                                         className="dropdown-link"
                                     >
-                                        Dodaj notatki
+                                        {t("nav.add_notes")}
                                     </Dropdown.Link>
                                     <Dropdown.Link
-                                        href={route('profile.edit')}
+                                        href={route("profile.edit")}
                                         className="dropdown-link"
                                     >
-                                        Ustawienia
+                                        {t("nav.settings")}
                                     </Dropdown.Link>
                                     <Dropdown.Link
                                         href={route("logout")}
@@ -105,11 +100,14 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                         as="button"
                                         className="dropdown-link"
                                     >
-                                        Wyloguj się
+                                        {t("nav.log_out")}
                                     </Dropdown.Link>
                                     {auth.isAdmin && (
-                                        <Dropdown.Link href={route('adminpanel.index')} className="dropdown-link bg-red-700 text-light">
-                                            Panel Administracyjny
+                                        <Dropdown.Link
+                                            href={route("adminpanel.index")}
+                                            className="dropdown-link bg-red-700 text-light"
+                                        >
+                                            {t("nav.admin_panel")}
                                         </Dropdown.Link>
                                     )}
                                 </Dropdown.Content>
@@ -121,14 +119,14 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                                 href={route("login")}
                                 className="etp-button ps-3 pe-3"
                             >
-                                Zaloguj się
+                                {t("buttons.login")}
                             </Link>
                             <Link
                                 href={route("register")}
                                 className="etp-button ps-3 pe-3"
                                 style={{ backgroundColor: "#100F49" }}
                             >
-                                Zarejestruj się
+                                {t("buttons.register")}
                             </Link>
                         </div>
                     )}
@@ -141,7 +139,7 @@ export default function Navbar({ appName, auth, openSideMenu }) {
                         type="text"
                         name="search-bar"
                         id="search-bar"
-                        placeholder="Szukaj kursów"
+                        placeholder={t("inputs.search")}
                     />
                     <button className="search-button">
                         <FontAwesomeIcon icon={faMagnifyingGlass} />

@@ -15,6 +15,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { useTranslation } from "react-i18next";
+
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
@@ -34,16 +36,18 @@ export default function Login({ status, canResetPassword }) {
         post(route("login"));
     };
 
+    const { t } = useTranslation();
+
     return (
         <div className="login-container min-h-screen">
             <Head title="Zaloguj się" />
 
             <div className="login-form">
                 <div className="row m-0 text-light text-center">
-                    <b className="h2 m-0">Miło cię widzieć!</b>
+                    <b className="h2 m-0">{t('login.nice_to_see_you')}</b>
                 </div>
                 <div className="row m-0 mb-5 text-light text-center">
-                    <p>Czym się dzisiaj zajmiesz?</p>
+                    <p>{t('login.what_will_you_do_today')}</p>
                 </div>
                 <form onSubmit={submit}>
                     <input
@@ -62,7 +66,7 @@ export default function Login({ status, canResetPassword }) {
                         type="password"
                         name="password"
                         id="password"
-                        placeholder="Hasło"
+                        placeholder={t('inputs.password')}
                         className="mb-2 mt-3 etp-input"
                         value={data.password}
                         autoComplete="current-password"
@@ -79,12 +83,12 @@ export default function Login({ status, canResetPassword }) {
                                 href={route("password.request")}
                                 className="text-light text-sm"
                             >
-                                Zapomniałeś hasła?
+                                {t('login.forgot_password')}
                             </Link>
                         )}
                         <label className="flex items-center">
                             <span className="ms-2 text-light text-sm me-2">
-                                Zapamiętaj mnie
+                    {t('login.remember_me')}
                             </span>
                             <Checkbox
                                 name="remember"
@@ -97,20 +101,20 @@ export default function Login({ status, canResetPassword }) {
                     </div>
                     <div className="row m-0 d-flex justify-content-center mb-5">
                         <button type="submit" className="etp-button">
-                            Zaloguj się
+                            {t('buttons.login')}
                         </button>
                     </div>
                     <div className="row m-0 d-flex justify-content-center mb-4">
                         <span className="text-light d-flex gap-2 justify-content-center">
-                            <p>Nie masz jeszcze konta?</p>
+                            <p>{t('login.no_account_yet')}</p>
                             <Link className="link" href={route("register")}>
-                                Zarejestruj się!
+                                {t('login.register_now')}
                             </Link>
                         </span>
                     </div>
                 </form>
                 <div className="row m-0 mb-4">
-                    <span className="br-text">Lub</span>
+                    <span className="br-text">{t('register.or')}</span>
                 </div>
 
                 <div className="row m-0 mb-2">
@@ -120,7 +124,7 @@ export default function Login({ status, canResetPassword }) {
                         className="social-btn text-light facebook"
                     >
                         <FontAwesomeIcon icon={faFacebook} className="icon" />{" "}
-                        Zaloguj się przez Facebooka
+                        {t('login.login_through_facebook')}
                     </a>
                 </div>
                 <div className="row m-0 mb-2">
@@ -130,7 +134,7 @@ export default function Login({ status, canResetPassword }) {
                         className="social-btn text-dark google"
                     >
                         <FontAwesomeIcon icon={faGoogle} className="icon" />{" "}
-                        Zaloguj się przez Google
+                        {t('login.login_through_google')}
                     </a>
                 </div>
                 <div className="row m-0 mb-2">
@@ -140,7 +144,7 @@ export default function Login({ status, canResetPassword }) {
                         className="social-btn text-light apple"
                     >
                         <FontAwesomeIcon icon={faApple} className="icon" />{" "}
-                        Zaloguj się przez Apple
+                        {t('login.login_through_apple')}
                     </a>
                 </div>
             </div>

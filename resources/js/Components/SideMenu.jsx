@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@inertiajs/react";
 import UserProfile from "./DefaultProfile";
+import { useTranslation } from "react-i18next";
 
 export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
     const menuRef = useRef(null);
@@ -36,6 +37,8 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
         };
     }, [isOpen]);
 
+    const { t } = useTranslation();
+
     return (
         <div
             className={`side-menu ${isOpen ? "toggle-menu" : ""}`}
@@ -53,40 +56,41 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
             </div>
             {auth && (
                 <div className="lower-menu">
-                    <Link href="#">
-                        <button className="etp-button ps-3 pe-3">
-                            Twoje kursy
-                        </button>
-                    </Link>
                     <Link
                         className="nav-link"
                         href={route("profile.index", auth.id)}
                     >
-                        <FontAwesomeIcon icon={faUser} /> <p>Profil</p>
+                        <FontAwesomeIcon icon={faUser} />{" "}
+                        <p>{t("nav.profile")}</p>
                     </Link>
                     <Link className="nav-link">
-                        <FontAwesomeIcon icon={faCalendar} /> <p>Kalendarz</p>
+                        <FontAwesomeIcon icon={faCalendar} />{" "}
+                        <p>{t("nav.calendar")}</p>
                     </Link>
                     <Link className="nav-link">
-                        <FontAwesomeIcon icon={faBell} /> <p>Powiadomienia</p>
+                        <FontAwesomeIcon icon={faBell} />{" "}
+                        <p>{t("nav.notifications")}</p>
                     </Link>
                     <Link className="nav-link">
-                        <FontAwesomeIcon icon={faMessage} /> <p>Wiadomości</p>
+                        <FontAwesomeIcon icon={faMessage} />{" "}
+                        <p>{t("nav.messages")}</p>
                     </Link>
                     <Link className="nav-link">
-                        <FontAwesomeIcon icon={faCartShopping} /> <p>Koszyk</p>
+                        <FontAwesomeIcon icon={faCartShopping} />{" "}
+                        <p>{t("nav.cart")}</p>
                     </Link>
                     <Link className="nav-link" href={route("profile.edit")}>
-                        <FontAwesomeIcon icon={faGear} /> <p>Ustawienia</p>
+                        <FontAwesomeIcon icon={faGear} />{" "}
+                        <p>{t("nav.settings")}</p>
                     </Link>
 
                     <div className="more-options mt-auto">
                         {auth.isTeacher && (
                             <Link
-                                href={route('course.create')}
+                                href={route("course.create")}
                                 className="nav-link"
                             >
-                                <p>Dodaj Kurs</p>
+                                <p>{t("nav.add_course")}</p>
                             </Link>
                         )}
                         <Link
@@ -95,7 +99,7 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                             as="button"
                             className="nav-link"
                         >
-                            <p>Dodaj notatki</p>
+                            <p>{t("nav.add_notes")}</p>
                         </Link>
                     </div>
                 </div>
@@ -107,12 +111,12 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                             <UserProfile user={auth} />
                         </div>
                         <Link
-                            href="#"
+                            href={route("logout")}
                             method="post"
                             as="button"
                             className="text-light"
                         >
-                            Wyloguj się
+                            {t("nav.log_out")}
                         </Link>
                     </div>
                 ) : (
@@ -121,14 +125,14 @@ export default function SideMenu({ appName, auth, isOpen, closeSideMenu }) {
                             href={route("login")}
                             className="etp-button ps-3 pe-3 text-center"
                         >
-                            Zaloguj się
+                            {t("buttons.login")}
                         </Link>
                         <Link
                             href={route("register")}
                             className="etp-button ps-3 pe-3 text-center"
                             style={{ backgroundColor: "#100F49" }}
                         >
-                            Zarejestruj się
+                            {t("buttons.register")}
                         </Link>
                     </div>
                 )}
