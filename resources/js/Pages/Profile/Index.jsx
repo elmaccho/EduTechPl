@@ -10,12 +10,15 @@ import { faCommentDots } from "@fortawesome/free-regular-svg-icons";
 import UserProfile from "@/Components/DefaultProfile";
 import About from "@/Components/Profile/About";
 import CompletedCourses from "@/Components/Profile/CompletedCourses";
+import { useTranslation } from "react-i18next";
 
-export default function Index({ user }) {
+export default function Index({ user, auth }) {
     const [content, setContent] = useState("profile");
-    console.log(user);
+    
+    const { t } = useTranslation();
+
     return (
-        <MainLayout auth={user}>
+        <MainLayout auth={auth}>
             <Head title={`Profil ${user.name} ${user.surname}`} />
             <div className="user-main-data-container">
                 <div className="profile-row">
@@ -31,7 +34,12 @@ export default function Index({ user }) {
                             </b>
                         </h2>
                         <h3 className="text-light">
-                            {user.accountType}
+                            {user.account_type == 'teacher' && (
+                                t('register.teacher')
+                            )}
+                            {user.account_type == 'student' && (
+                                t('register.student')
+                            )}
                         </h3>
                     </div>
                 </div>
@@ -43,7 +51,7 @@ export default function Index({ user }) {
                         }`}
                         onClick={() => setContent("profile")}
                     >
-                        Profil
+                        {t('profile.profile')}
                     </button>
                     {user.isTeacher && (
                         <button
@@ -53,7 +61,7 @@ export default function Index({ user }) {
                             }`}
                             onClick={() => setContent("courses")}
                         >
-                            Kursy
+                            {t('profile.courses')}
                         </button>
                     )}
                     <button
@@ -65,7 +73,7 @@ export default function Index({ user }) {
                         }`}
                         onClick={() => setContent("completed_courses")}
                     >
-                        Ukończone kursy
+                        {t('profile.completed_courses')}
                     </button>
                     <button
                         href="#"
@@ -74,7 +82,7 @@ export default function Index({ user }) {
                         }`}
                         onClick={() => setContent("wish_list")}
                     >
-                        Lista życzeń
+                        {t('profile.wish_list')}
                     </button>
                     <button
                         href="#"
@@ -83,7 +91,7 @@ export default function Index({ user }) {
                         }`}
                         onClick={() => setContent("notes")}
                     >
-                        Notatki
+                        {t('profile.notes')}
                     </button>
                     <button
                         href="#"
@@ -92,7 +100,7 @@ export default function Index({ user }) {
                         }`}
                         onClick={() => setContent("reviews")}
                     >
-                        Recenzje
+                        {t('profile.reviews')}
                     </button>
                     {user.isTeacher && (
                         <Link
@@ -100,7 +108,7 @@ export default function Index({ user }) {
                             className="nav-profile-button text-light d-flex gap-2 align-items-center text-lg ml-auto "
                         >
                             <FontAwesomeIcon icon={faCommentDots} />
-                            <p>Umów spotkanie</p>
+                            <p>{t('profile.arrange_a_meeting')}</p>
                         </Link>
                     )}
                 </nav>

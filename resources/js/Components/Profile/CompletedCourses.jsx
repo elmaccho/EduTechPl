@@ -14,13 +14,16 @@ import card3img from "/public/img/top courses/pythonpodstawy.png";
 import card4img from "/public/img/top courses/podstawyprojektowania.png";
 import card5img from "/public/img/top courses/podstawychemii.png";
 import { Link } from "@inertiajs/react";
+import { useTranslation } from "react-i18next";
 
 export default function CompletedCourses() {
+    const { t } = useTranslation();
+
     return (
         <div className="courses-wrapper">
             <div className="cards-wrapper">
                 <div className="row text-center mt-5">
-                    <h2 className="text-light h1">Ukończone kursy</h2>
+                    <h2 className="text-light h1">{t('profile.completed_courses')}</h2>
                 </div>
                 <Swiper
                     spaceBetween={30}
@@ -45,7 +48,7 @@ export default function CompletedCourses() {
                             <div className="course-card-img">
                                 <img src={card1img} alt="" />
                                 <div className="course-card-img-background">
-                                    <p>Ukończono!</p>
+                                    <p>{t('profile.completed')}</p>
                                 </div>
                                 <div className="progress-wrapper">
                                     <div className="outer-ring">
@@ -66,7 +69,7 @@ export default function CompletedCourses() {
                             <div className="course-card-img">
                                 <img src={card2img} alt="" />
                                 <div className="course-card-img-background">
-                                    <p>Ukończono!</p>
+                                    <p>{t('profile.completed')}</p>
                                 </div>
                                 <div className="progress-wrapper">
                                     <div className="outer-ring">
@@ -87,7 +90,7 @@ export default function CompletedCourses() {
                             <div className="course-card-img">
                                 <img src={card3img} alt="" />
                                 <div className="course-card-img-background">
-                                    <p>Ukończono!</p>
+                                    <p>{t('profile.completed')}</p>
                                 </div>
                                 <div className="progress-wrapper">
                                     <div className="outer-ring">
@@ -108,7 +111,7 @@ export default function CompletedCourses() {
                             <div className="course-card-img">
                                 <img src={card4img} alt="" />
                                 <div className="course-card-img-background">
-                                    <p>Ukończono!</p>
+                                    <p>{t('profile.completed')}</p>
                                 </div>
                                 <div className="progress-wrapper">
                                     <div className="outer-ring">
@@ -129,7 +132,7 @@ export default function CompletedCourses() {
                             <div className="course-card-img">
                                 <img src={card5img} alt="" />
                                 <div className="course-card-img-background">
-                                    <p>Ukończono!</p>
+                                    <p>{t('profile.completed')}</p>
                                 </div>
                                 <div className="progress-wrapper">
                                     <div className="outer-ring">

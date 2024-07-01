@@ -18,9 +18,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ProfileController extends Controller
 {
     public function index(User $user){
-        
+        $auth = auth()->user();
+
         return Inertia::render('Profile/Index', [
             'user' => new UserResource($user),
+            'auth' => new UserResource($auth),
         ]);
     }
     /**

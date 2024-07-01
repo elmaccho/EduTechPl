@@ -8,6 +8,7 @@ import UserProfile from "../DefaultProfile";
 import "/resources/css/Profile/personalinfo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 export default function PersonalInfo({ mustVerifyEmail, status, progress, user }) {
     const [preview, setPreview] = useState(null);
@@ -38,9 +39,11 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
         });
     };
 
+    const { t } = useTranslation();
+
     return (
         <>
-            <h2 className="h2 text-light forms-settings-title">Informacje</h2>
+            <h2 className="h2 text-light forms-settings-title">{t('settings.informations.title')}</h2>
             <form
                 onSubmit={submit}
                 className="d-flex flex-column align-items-center"
@@ -48,12 +51,12 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                 <div className="form-edit-row">
                     <div className="form-col inputs-wrapper">
                         <div className="mb-3">
-                            <InputLabel htmlFor="name" value="Imię" />
+                            <InputLabel htmlFor="name" value={t('inputs.first_name')} />
                             <input
                                 className="user-settings-input"
                                 id="name"
                                 type="text"
-                                placeholder="Imię"
+                                placeholder={t('inputs.first_name')}
                                 value={data.name}
                                 required
                                 autoComplete="name"
@@ -65,12 +68,12 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                         </div>
 
                         <div className="mb-3">
-                            <InputLabel htmlFor="surname" value="Nazwisko" />
+                            <InputLabel htmlFor="surname" value={t('inputs.last_name')} />
                             <input
                                 className="user-settings-input"
                                 id="surname"
                                 type="text"
-                                placeholder="Nazwisko"
+                                placeholder={t('inputs.last_name')}
                                 value={data.surname}
                                 required
                                 autoComplete="surname"
@@ -84,13 +87,13 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                         <div className="mb-3">
                             <InputLabel
                                 htmlFor="phone_number"
-                                value="Numer telefonu"
+                                value={t('inputs.phone_number')}
                             />
                             <input
                                 className="user-settings-input"
                                 id="phone_number"
                                 type="tel"
-                                placeholder="Numer telefonu"
+                                placeholder={t('inputs.phone_number')}
                                 value={data.phone_number || ""}
                                 autoComplete="phone_number"
                                 onChange={(e) =>
@@ -102,12 +105,12 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                         </div>
 
                         <div className="mb-3">
-                            <InputLabel htmlFor="address" value="Adres" />
+                            <InputLabel htmlFor="address" value={t('inputs.address')} />
                             <input
                                 className="user-settings-input"
                                 id="address"
                                 type="text"
-                                placeholder="Adres"
+                                placeholder={t('inputs.address')}
                                 value={data.address || ""}
                                 autoComplete="address"
                                 onChange={(e) =>
@@ -117,23 +120,11 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                             <InputError message={errors.address} />
                         </div>
                         <div className="mb-3">
-                            <InputLabel htmlFor="about" value="O mnie" />
-                            <input
-                                className="user-settings-input"
-                                id="address"
-                                type="text"
-                                placeholder="Adres"
-                                value={data.address || ""}
-                                autoComplete="address"
-                                onChange={(e) =>
-                                    setData("address", e.target.value)
-                                }
-                                hidden
-                            />
+                            <InputLabel htmlFor="about" value={t('inputs.description')} />
                             <textarea
                                 className="user-settings-input user-settings-textarea"
                                 id="about"
-                                placeholder="O mnie"
+                                placeholder={t('inputs.description')}
                                 value={data.about || ""}
                                 onChange={(e) => 
                                     setData("about", e.target.value)
@@ -162,7 +153,7 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                             htmlFor="image_picker"
                             className="image-picker-label"
                         >
-                            <p>Wybierz zdjęcie profilowe </p>
+                            <p>{t('inputs.change_profile_image')} </p>
                             <FontAwesomeIcon icon={faImage} />
                         </label>
                         <input
@@ -187,7 +178,7 @@ export default function PersonalInfo({ mustVerifyEmail, status, progress, user }
                     type="submit"
                     className="etp-button ps-5 pe-5 pt-2 pb-2"
                 >
-                    Zapisz
+                    {t('buttons.save')}
                 </button>
             </form>
         </>

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import PersonalInfo from "@/Components/User Settings/PersonalInfo";
 import Preferences from "@/Components/User Settings/Preferences";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 export default function Edit({ auth, appName }) {
     const [selectedForm, setSelectedForm] = useState("info");
@@ -41,7 +42,8 @@ export default function Edit({ auth, appName }) {
         });
     };
     
-    
+    const { t } = useTranslation();
+
     return (
         <MainLayout auth={auth} appName={appName}>
             <Head title="Ustawienia profilu" />
@@ -58,10 +60,9 @@ export default function Edit({ auth, appName }) {
                             />
                         </div>
                         <div className="setting-row-text">
-                            <div className="setting-row-title">Informacje</div>
+                            <div className="setting-row-title">{t('settings.informations.title')}</div>
                             <div className="setting-row-description">
-                                Zaktualizuj swoje zdjęcie profilowe, imię i
-                                nazwisko, a także inne informacje.
+                                {t('settings.informations.description')}
                             </div>
                         </div>
                     </button>
@@ -76,9 +77,9 @@ export default function Edit({ auth, appName }) {
                             />
                         </div>
                         <div className="setting-row-text">
-                            <div className="setting-row-title">Preferencje</div>
+                            <div className="setting-row-title">{t('settings.preferences.title')}</div>
                             <div className="setting-row-description">
-                                Dostosuj wygląd, motyw
+                                {t('settings.preferences.description')}
                             </div>
                         </div>
                     </button>

@@ -27,6 +27,7 @@ class UserResource extends JsonResource
             'address' => $this->address,
             'about' => $this->about,
             'accountType' => $this->getAccountType(),
+            'account_type' => $this->account_type,
             'isAdmin' => $this->isAdmin(),
             'isTeacher' => $this->isTeacher(),
             'isStudent' => $this->isStudent()

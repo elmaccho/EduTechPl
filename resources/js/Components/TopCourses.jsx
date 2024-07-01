@@ -21,12 +21,15 @@ import {
     faStarHalfStroke,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@inertiajs/react";
+import { useTranslation } from "react-i18next";
 
 export default function TopCourses() {
+    const { t } = useTranslation();
+
     return (
         <div className="top-courses-container">
             <div className="row m-0 text-left mb-3">
-                <h2 className="text-light text-center h2">Ostatnio na topie</h2>
+                <h2 className="text-light text-center h2">{t('titles.trending_now')}</h2>
             </div>
             <div className="cards-wrapper">
                 <Swiper

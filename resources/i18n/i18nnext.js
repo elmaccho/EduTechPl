@@ -1,12 +1,9 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
-// import plFooter from "/lang/pl/pl_footer.php";
-// import enFooter from "/lang/en/en_footer.php";
-
 i18next.use(initReactI18next).init({
     fallbackLng: "en",
-    debug: true,
+    debug: false,
     resources: {
         en: {
             translation: {
@@ -31,6 +28,7 @@ i18next.use(initReactI18next).init({
                     select_account_type: "Select account type",
                     select_rank: "Select rank",
                     change_image: "Change image",
+                    change_profile_image: "Change profile image",
                     search: "Search",
                     name_or_surname: "First name or last name",
                     category_name: "Category name",
@@ -79,6 +77,7 @@ i18next.use(initReactI18next).init({
                 titles: {
                     trending_now: "Trending Now",
                     popular_categories: "Popular Categories",
+                    see_more: "See more categories",
                     login: "Login",
                     register: "Register",
                     users: "Users",
@@ -95,6 +94,28 @@ i18next.use(initReactI18next).init({
                 mobile_app: {
                     title: "Mobile App",
                     description: "Take your courses anywhere on your phone!",
+                },
+                profile: {
+                    profile: "Profile",
+                    courses: "Courses",
+                    completed_courses: "Completed Courses",
+                    wish_list: "Wish List",
+                    notes: "Notes",
+                    reviews: "Reviews",
+                    arrange_a_meeting: "Arrange a Meeting",
+                    completed: "Completed!",
+                    about_me: "About me",
+                },
+                settings: {
+                    informations: {
+                        title: "Informations",
+                        description: "Update your profile picture, name, and other information.",
+                    },
+
+                    preferences: {
+                        title: "Preferences",
+                        description: "Customize appearance, theme.",
+                    }
                 },
                 nav: {
                     profile: "Profile",
@@ -142,6 +163,7 @@ i18next.use(initReactI18next).init({
                     select_account_type: "Wybierz typ konta",
                     select_rank: "Wybierz rangę",
                     change_image: "Zmień obraz",
+                    change_profile_image: "Zmień zdjęcie profilowe",
                     search: "Szukaj",
                     name_or_surname: "Imię lub nazwisko",
                     category_name: "Nazwa kategorii",
@@ -153,7 +175,7 @@ i18next.use(initReactI18next).init({
                     all_courses: "Wszystkie kursy",
                     all_notes: "Wszystkie notatki",
                     all_categories: "Wszystkie kategorie",
-                    all_sliders: "Wszystkie suwaki",
+                    all_sliders: "Wszystkie slidery",
                 },
                 buttons: {
                     register: "Zarejestruj się",
@@ -164,7 +186,7 @@ i18next.use(initReactI18next).init({
                     add_category: "Dodaj kategorię",
                     add_note: "Dodaj notatkę",
                     add_course: "Dodaj kurs",
-                    add_slider: "Dodaj suwak",
+                    add_slider: "Dodaj slider",
                 },
                 login: {
                     forgot_password: "Zapomniałeś hasła?",
@@ -176,7 +198,7 @@ i18next.use(initReactI18next).init({
                     login_through_apple: "Zaloguj się przez Apple",
         
                     nice_to_see_you: "Miło cię widzieć!",
-                    what_will_you_do_today: "Co dzisiaj zrobisz?",
+                    what_will_you_do_today: "Co będziesz dzisiaj robić?",
                 },
                 register: {
                     or: "Lub",
@@ -188,8 +210,9 @@ i18next.use(initReactI18next).init({
                     teacher: "Nauczyciel",
                 },
                 titles: {
-                    trending_now: "Teraz na topie",
+                    trending_now: "Popularne teraz",
                     popular_categories: "Popularne kategorie",
+                    see_more: "Zobacz więcej kategorii",
                     login: "Logowanie",
                     register: "Rejestracja",
                     users: "Użytkownicy",
@@ -201,19 +224,40 @@ i18next.use(initReactI18next).init({
                 newsletter: {
                     promo: "Nie przegap żadnych promocji,",
                     signup: "Zapisz się do Newslettera!",
-                    email_prompt: "Wpisz swój adres e-mail",
+                    email_prompt: "Wprowadź swój adres email",
                 },
                 mobile_app: {
                     title: "Aplikacja mobilna",
-                    description: "Weź swoje kursy wszędzie na swoim telefonie!",
+                    description: "Bierz swoje kursy wszędzie na telefonie!",
+                },
+                profile: {
+                    profile: "Profil",
+                    courses: "Kursy",
+                    completed_courses: "Ukończone kursy",
+                    wish_list: "Lista życzeń",
+                    notes: "Notatki",
+                    reviews: "Recenzje",
+                    arrange_a_meeting: "Umów spotkanie",
+                    completed: "Ukończone!",
+                    about_me: "O mnie",
+                },
+                settings: {
+                    informations: {
+                        title: "Informacje",
+                        description: "Zaktualizuj swoje zdjęcie profilowe, nazwę i inne informacje.",
+                    },
+                    preferences: {
+                        title: "Preferencje",
+                        description: "Dostosuj wygląd, motyw.",
+                    }
                 },
                 nav: {
                     profile: "Profil",
-                    add_course: "Dodaj Kurs",
-                    add_notes: "Dodaj Notatki",
+                    add_course: "Dodaj kurs",
+                    add_notes: "Dodaj notatki",
                     settings: "Ustawienia",
                     log_out: "Wyloguj się",
-                    admin_panel: "Panel Administracyjny",
+                    admin_panel: "Panel administratora",
                     calendar: "Kalendarz",
                     cart: "Koszyk",
                     notifications: "Powiadomienia",
@@ -229,7 +273,7 @@ i18next.use(initReactI18next).init({
                     cookie_settings: "Ustawienia plików cookie",
                 },
             },
-        },        
+        },    
         de: {
             translation: {
                 sweetalert: {
@@ -253,7 +297,8 @@ i18next.use(initReactI18next).init({
                     select_account_type: "Kontotyp auswählen",
                     select_rank: "Rang auswählen",
                     change_image: "Bild ändern",
-                    search: "Suche",
+                    change_profile_image: "Profilbild ändern",
+                    search: "Suchen",
                     name_or_surname: "Vorname oder Nachname",
                     category_name: "Kategoriename",
                     course_name: "Kursname",
@@ -279,28 +324,29 @@ i18next.use(initReactI18next).init({
                 },
                 login: {
                     forgot_password: "Passwort vergessen?",
-                    remember_me: "Erinnere dich an mich",
+                    remember_me: "Angemeldet bleiben",
                     no_account_yet: "Noch kein Konto?",
                     register_now: "Jetzt registrieren!",
-                    login_through_facebook: "Über Facebook anmelden",
-                    login_through_google: "Über Google anmelden",
-                    login_through_apple: "Über Apple anmelden",
+                    login_through_facebook: "Mit Facebook anmelden",
+                    login_through_google: "Mit Google anmelden",
+                    login_through_apple: "Mit Apple anmelden",
         
                     nice_to_see_you: "Schön, dich zu sehen!",
                     what_will_you_do_today: "Was wirst du heute tun?",
                 },
                 register: {
                     or: "Oder",
-                    register_through_facebook: "Über Facebook registrieren",
-                    register_through_google: "Über Google registrieren",
-                    register_through_apple: "Über Apple registrieren",
+                    register_through_facebook: "Mit Facebook registrieren",
+                    register_through_google: "Mit Google registrieren",
+                    register_through_apple: "Mit Apple registrieren",
                     complete_register: "Registrierung abschließen",
-                    student: "Student",
+                    student: "Schüler",
                     teacher: "Lehrer",
                 },
                 titles: {
-                    trending_now: "Zurzeit angesagt",
+                    trending_now: "Aktuell im Trend",
                     popular_categories: "Beliebte Kategorien",
+                    see_more: "Mehr Kategorien ansehen",
                     login: "Anmelden",
                     register: "Registrieren",
                     users: "Benutzer",
@@ -316,18 +362,51 @@ i18next.use(initReactI18next).init({
                 },
                 mobile_app: {
                     title: "Mobile App",
-                    description: "Nehmen Sie Ihre Kurse überall auf Ihrem Telefon mit!",
+                    description: "Nehmen Sie Ihre Kurse überall auf Ihrem Handy mit!",
+                },
+                profile: {
+                    profile: "Profil",
+                    courses: "Kurse",
+                    completed_courses: "Abgeschlossene Kurse",
+                    wish_list: "Wunschliste",
+                    notes: "Notizen",
+                    reviews: "Bewertungen",
+                    arrange_a_meeting: "Ein Treffen vereinbaren",
+                    completed: "Abgeschlossen!",
+                    about_me: "Über mich",
+                },
+                settings: {
+                    informations: {
+                        title: "Informationen",
+                        description: "Aktualisieren Sie Ihr Profilbild, Ihren Namen und andere Informationen.",
+                    },
+                    preferences: {
+                        title: "Einstellungen",
+                        description: "Erscheinungsbild und Thema anpassen.",
+                    }
+                },
+                nav: {
+                    profile: "Profil",
+                    add_course: "Kurs hinzufügen",
+                    add_notes: "Notizen hinzufügen",
+                    settings: "Einstellungen",
+                    log_out: "Abmelden",
+                    admin_panel: "Admin-Panel",
+                    calendar: "Kalender",
+                    cart: "Warenkorb",
+                    notifications: "Benachrichtigungen",
+                    messages: "Nachrichten",
                 },
                 footer: {
                     about_us: "Über uns",
                     download_app: "App herunterladen",
-                    contact_us: "Kontaktiere uns",
-                    terms: "Bedingungen",
-                    privacy_policy: "Datenschutz-Bestimmungen",
+                    contact_us: "Kontaktieren Sie uns",
+                    terms: "Nutzungsbedingungen",
+                    privacy_policy: "Datenschutzrichtlinie",
                     tech_support: "Technischer Support",
                     cookie_settings: "Cookie-Einstellungen",
                 },
             },
-        },        
+        }, 
     },
 });

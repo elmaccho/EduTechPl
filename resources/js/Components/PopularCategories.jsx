@@ -11,12 +11,15 @@ import it from "/public/img/popular categories/it.png";
 import { Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 export default function PopularCategories() {
+    const { t } = useTranslation();
+    
     return (
         <div className="popular-categories-container mb-5">
             <div className="row m-0 text-center mb-3">
-                <h2 className="text-light h2">Popularne Kategorie</h2>
+                <h2 className="text-light h2">{t('titles.popular_categories')}</h2>
             </div>
             <div className="categories-wrapper">
                 <div className="card-etp">
@@ -62,7 +65,7 @@ export default function PopularCategories() {
                 <div className="card-etp card-view-more">
                     <Link href={route('coursecategory.index')}>
                         <div className="card-img d-flex justify-content-center align-items-center">
-                            <p className="text-light h3">Zobacz Więcej Kategorii <FontAwesomeIcon icon={faArrowRight} /></p> 
+                            <p className="text-light h3">{t('titles.see_more')} <FontAwesomeIcon icon={faArrowRight} /></p> 
                         </div>
                     </Link>
                 </div>

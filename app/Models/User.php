@@ -57,7 +57,7 @@ class User extends Authenticatable
     public function getAccountType()
     {
         if($this->account_type == 'teacher'){
-            return 'Nauczyciel';
+            return "Nauczyciel";
         } elseif($this->account_type == 'student'){
             return 'Uczeń';
         }
