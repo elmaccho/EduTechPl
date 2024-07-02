@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
         return Inertia::render('Profile/Index', [
             'user' => new UserResource($user),
-            'auth' => new UserResource($auth),
+            'auth' => $auth ? new UserResource($auth) : null,
         ]);
     }
     /**
@@ -35,7 +35,7 @@ class ProfileController extends Controller
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
-            'auth' => new UserResource($auth),
+            'auth' => $auth ? new UserResource($auth) : null,
         ]);
     }
 

@@ -84,22 +84,22 @@ export default function TopCourses() {
                                         />
                                     </div>
                                     <div className="reviews-number text-sm">
-                                        (200 ocen)
+                                        (200 {t('courses.ratings')})
                                     </div>
                                 </div>
                                 <div className="author-info">
                                     <p className="author-name">
-                                        Dr.Paweł Kowalski
+                                        {t('courses.teacher')}: Dr.Paweł Kowalski
                                     </p>
                                     <div className="author-profile-picture"></div>
                                 </div>
                                 <div className="top-card-more-info">
                                     <div className="duration text-sm">
-                                        Czas trwania: 35h
+                                        {t('courses.duration')}: 35h
                                     </div>
                                     <div className="number-of-contestants">
                                         <button className="etp-button text-sm">
-                                            400 uczestników
+                                            400 {t('courses.participants')}
                                         </button>
                                     </div>
                                 </div>
@@ -141,22 +141,22 @@ export default function TopCourses() {
                                         />
                                     </div>
                                     <div className="reviews-number text-sm">
-                                        (180 ocen)
+                                        (180 {t('courses.ratings')})
                                     </div>
                                 </div>
                                 <div className="author-info">
                                     <p className="author-name">
-                                        Prof. Barbara Nowak
+                                        {t('courses.teacher')}: Prof. Barbara Nowak
                                     </p>
                                     <div className="author-profile-picture"></div>
                                 </div>
                                 <div className="top-card-more-info">
                                     <div className="duration text-sm">
-                                        Czas trwania: 30h
+                                        {t('courses.duration')}: 30h
                                     </div>
                                     <div className="number-of-contestants">
                                         <button className="etp-button text-sm">
-                                            400 uczestników
+                                            400 {t('courses.participants')}
                                         </button>
                                     </div>
                                 </div>
@@ -198,22 +198,22 @@ export default function TopCourses() {
                                         />
                                     </div>
                                     <div className="reviews-number text-sm">
-                                        (250 ocen)
+                                        (250 {t('courses.ratings')})
                                     </div>
                                 </div>
                                 <div className="author-info">
                                     <p className="author-name">
-                                        Dr. Michał Kowalski
+                                        {t('courses.teacher')}: Dr. Michał Kowalski
                                     </p>
                                     <div className="author-profile-picture"></div>
                                 </div>
                                 <div className="top-card-more-info">
                                     <div className="duration text-sm">
-                                        Czas trwania: 20h
+                                        {t('courses.duration')}: 20h
                                     </div>
                                     <div className="number-of-contestants">
                                         <button className="etp-button text-sm">
-                                            500 uczestników
+                                            500 {t('courses.participants')}
                                         </button>
                                     </div>
                                 </div>
@@ -255,22 +255,22 @@ export default function TopCourses() {
                                         />
                                     </div>
                                     <div className="reviews-number text-sm">
-                                        (170 ocen)
+                                        (170 {t('courses.ratings')})
                                     </div>
                                 </div>
                                 <div className="author-info">
                                     <p className="author-name">
-                                        Dr. Adam Kowalski
+                                        {t('courses.teacher')}: Dr. Adam Kowalski
                                     </p>
                                     <div className="author-profile-picture"></div>
                                 </div>
                                 <div className="top-card-more-info">
                                     <div className="duration text-sm">
-                                        Czas trwania: 25h
+                                        {t('courses.duration')}: 25h
                                     </div>
                                     <div className="number-of-contestants">
                                         <button className="etp-button text-sm">
-                                            350 uczestników
+                                            350 {t('courses.participants')}
                                         </button>
                                     </div>
                                 </div>
@@ -312,22 +312,22 @@ export default function TopCourses() {
                                         />
                                     </div>
                                     <div className="reviews-number text-sm">
-                                        (110 ocen)
+                                        (110 {t('courses.ratings')})
                                     </div>
                                 </div>
                                 <div className="author-info">
                                     <p className="author-name">
-                                        Dr. Paweł Kowalski
+                                        {t('courses.teacher')}: Dr. Paweł Kowalski
                                     </p>
                                     <div className="author-profile-picture"></div>
                                 </div>
                                 <div className="top-card-more-info">
                                     <div className="duration text-sm">
-                                        Czas trwania: 35h
+                                        {t('courses.duration')}: 35h
                                     </div>
                                     <div className="number-of-contestants">
                                         <button className="etp-button text-sm">
-                                            210 uczestników
+                                            210 {t('courses.participants')}
                                         </button>
                                     </div>
                                 </div>

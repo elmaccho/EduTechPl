@@ -71,10 +71,6 @@
     text-align: left;
 }
 
-.author-name::before {
-    content: 'Prowadzący: ';
-}
-
 /* SWIPER STYLES */
 .swiper {
     width: 100%;

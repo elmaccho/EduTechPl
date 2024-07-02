@@ -16,7 +16,7 @@ class CourseCategoryController extends Controller
 
         return Inertia::render('Categories/Index', [
             'categories' => $categories,
-            'auth' => new UserResource($auth),
+            'auth' => $auth ? new UserResource($auth) : null,
         ]);
     }
 }

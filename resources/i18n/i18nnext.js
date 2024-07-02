@@ -2,7 +2,7 @@ import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
 i18next.use(initReactI18next).init({
-    fallbackLng: "en",
+    fallbackLng: "pl",
     debug: false,
     resources: {
         en: {
@@ -138,6 +138,16 @@ i18next.use(initReactI18next).init({
                     tech_support: "Tech Support",
                     cookie_settings: "Cookie Settings",
                 },
+                courses: {
+                    participants: "Participants",
+                    duration: "Duration",
+                    teacher: "Teacher",
+                    price: "Price",
+                    level: "Level",
+                    language: "Language",
+                    ratings: "Ratings",
+                    description: "Description"
+                },
             },
         },
         pl: {
@@ -272,6 +282,15 @@ i18next.use(initReactI18next).init({
                     tech_support: "Wsparcie techniczne",
                     cookie_settings: "Ustawienia plików cookie",
                 },
+                courses: {
+                    participants: "Uczestników",
+                    duration: "Czas trwania",
+                    teacher: "Prowadzący",
+                    price: "Cena",
+                    level: "Poziom",
+                    language: "Język",
+                    ratings: "Ocen",
+                    description: "Opis",                },
             },
         },    
         de: {
@@ -405,6 +424,16 @@ i18next.use(initReactI18next).init({
                     privacy_policy: "Datenschutzrichtlinie",
                     tech_support: "Technischer Support",
                     cookie_settings: "Cookie-Einstellungen",
+                },
+                courses:{
+                    participants: "Teilnehmer",
+                    duration: "Dauer",
+                    teacher: "Lehrer",
+                    price: "Preis",
+                    level: "Niveau",
+                    language: "Sprache",
+                    ratings: "Bewertungen",
+                    description: "Beschreibung",                    
                 },
             },
         }, 

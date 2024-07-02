@@ -26,7 +26,7 @@ class CourseController extends Controller
         $auth = auth()->user();
 
         return Inertia('Course/Create', [
-            'auth' => new UserResource($auth),
+            'auth' => $auth ? new UserResource($auth) : null,
         ]);
     }
 
@@ -46,7 +46,7 @@ class CourseController extends Controller
         $auth = auth()->user();
 
         return Inertia('Course/Show', [
-            'auth' => new UserResource($auth),
+            'auth' => $auth ? new UserResource($auth) : null,
             'course' => $course,
         ]);
     }
