@@ -148,6 +148,9 @@ i18next.use(initReactI18next).init({
                     language: "Language",
                     ratings: "Ratings",
                     description: "Description",
+                    title: "Title",
+                    choose_category: "Choose category",
+                    add_thumbnail: "Add thumbnail"
                 },
             },
         },
@@ -293,6 +296,9 @@ i18next.use(initReactI18next).init({
                     language: "Język",
                     ratings: "Ocen",
                     description: "Opis",
+                    title: "Tytuł",
+                    choose_category: "Wybierz kategorię",
+                    add_thumbnail: "Dodaj miniaturkę"
                 },
             },
         },

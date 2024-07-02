@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/kurs/utworzkurs', [CourseController::class, 'create'])->name('course.create');
+    Route::post('/kurs/utworzkurs', [CourseController::class, 'store'])->name('course.store');
 
     // panel administracyjny
     Route::middleware('admin')->prefix('panel')->group(function () {
@@ -72,7 +74,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/kurs/{course}', [CourseController::class, 'show'])->name('course.show');
-Route::get('/kurs', [CourseController::class, 'create'])->name('course.create');
 
 Route::get('/profil/{user}', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/kategorie', [CourseCategoryController::class, 'index'])->name('coursecategory.index');

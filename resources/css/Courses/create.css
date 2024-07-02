@@ -1,0 +1,31 @@
+.thumbnail-label, .create-input{
+    width: 400px;
+    height: 50px;
+    background-color: #4341A5;
+    border: none;
+    outline: none;
+
+    color: white;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.create-input::placeholder{
+    color: whitesmoke;
+}
+.thumbnail-label{
+    padding-left: 15px;
+    cursor: pointer;
+}
+.create-course{
+    display: flex;
+    justify-content: center;
+
+    padding-top: 100px;
+}
+.thumbnail-preview{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}

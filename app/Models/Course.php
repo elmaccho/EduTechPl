@@ -12,9 +12,17 @@ class Course extends Model
     protected $fillable = [
         'image_path',
         'title',
+        'price',
+        'duration',
+        'level',
+        'language',
+        'student_count',
+        'rating_count',
         'teacher_id',
         'category_id',
         'description',
+        'rating_average',
+        'active'
     ];
 
     public function category()

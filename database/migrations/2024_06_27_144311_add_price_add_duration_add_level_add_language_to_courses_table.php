@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::table('courses', function (Blueprint $table) {
             $table->decimal('price', 8, 2)->default(0.00)->after('title');
             $table->integer('duration')->default(0)->after('price');
-            $table->enum('level', array_column(LevelEnum::cases(), 'value'))->after('duration');
-            $table->enum('language', array_column(LanguagesEnum::cases(), 'value'))->after('level');
+            $table->enum('level', array_column(LevelEnum::cases(), 'value'))->nullable()->after('duration');
+            $table->enum('language', array_column(LanguagesEnum::cases(), 'value'))->nullable()->after('level');
             $table->integer('student_count')->default(0)->after('language');
             $table->integer('rating_count')->default(0)->after('student_count');
-            $table->decimal('rating_average', 3, 2)->default(0.00);
+            $table->decimal('rating_average', 3, 2)->default(0.00)->after('rating_count');
+            $table->boolean('active')->default(0)->after('rating_average');
         });
     }
 
@@ -37,7 +38,8 @@ return new class extends Migration
                 'language',
                 'student_count',
                 'rating_count',
-                'rating_average'
+                'rating_average',
+                'active'
             ]);
         });
     }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\LanguagesEnum;
+use App\LevelEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CourseStoreRequest extends FormRequest
 {
@@ -24,9 +27,17 @@ class CourseStoreRequest extends FormRequest
         return [
             'image_path' => ['required', 'image'],
             'title' => ['required', 'string'],
+            'price' => ['required', 'decimal:0,99999'],
+            'duration' => ['required', 'integer'],
+            'level' => ['nullable', Rule::enum(LevelEnum::class)],
+            'language' => ['nullable', Rule::enum(LanguagesEnum::class)],
+            'student_count' => ['required', 'integer'],
+            'rating_count' => ['required', 'integer'],
             'teacher_id' => ['required'],
             'category_id' => ['required'],
-            'description' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
+            'rating_average' => ['required'],
+            'active' => ['required' , 'boolean'],
         ];
     }
 }

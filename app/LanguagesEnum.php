@@ -6,4 +6,5 @@ enum LanguagesEnum: string
 {
     case POLISH = 'Polski';
     case ENGLISH = 'English';
+    case OTHER = 'Other';
 }
