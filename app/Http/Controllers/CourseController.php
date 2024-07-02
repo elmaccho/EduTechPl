@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CourseStoreRequest;
 use App\Http\Resources\UserResource;
+use App\LanguagesEnum;
+use App\LevelEnum;
 use App\Models\Course;
 use App\Models\CoursesCategory;
 use Faker\Provider\ar_EG\Internet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -48,7 +51,7 @@ class CourseController extends Controller
 
         $course = Course::create($data);
 
-        return Redirect::route('course.show', $course->id)->with('success_message');
+        return Redirect::route('course.edit', $course->id)->with('success_message');
     }
 
     /**
@@ -67,9 +70,22 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Course $course)
     {
-        //
+        if(! Gate::allows('edit-course', $course)){
+            abort(403);
+        }
+
+        $auth = auth()->user();
+        $languages = LanguagesEnum::cases();
+        $levels = LevelEnum::cases();
+
+        return Inertia('Course/Edit', [
+            'auth' => $auth ? new UserResource($auth) : null,
+            'course' => $course,
+            'languages' => $languages,
+            'levels' => $levels,
+        ]);
     }
 
     /**

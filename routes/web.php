@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/kurs/utworzkurs', [CourseController::class, 'create'])->name('course.create');
     Route::post('/kurs/utworzkurs', [CourseController::class, 'store'])->name('course.store');
+    Route::get('/kurs/edycja/{course}', [CourseController::class, 'edit'])->name('course.edit');
 
     // panel administracyjny
     Route::middleware('admin')->prefix('panel')->group(function () {
