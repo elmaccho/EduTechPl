@@ -109,13 +109,14 @@ i18next.use(initReactI18next).init({
                 settings: {
                     informations: {
                         title: "Informations",
-                        description: "Update your profile picture, name, and other information.",
+                        description:
+                            "Update your profile picture, name, and other information.",
                     },
 
                     preferences: {
                         title: "Preferences",
                         description: "Customize appearance, theme.",
-                    }
+                    },
                 },
                 nav: {
                     profile: "Profile",
@@ -146,7 +147,7 @@ i18next.use(initReactI18next).init({
                     level: "Level",
                     language: "Language",
                     ratings: "Ratings",
-                    description: "Description"
+                    description: "Description",
                 },
             },
         },
@@ -206,7 +207,7 @@ i18next.use(initReactI18next).init({
                     login_through_facebook: "Zaloguj się przez Facebook",
                     login_through_google: "Zaloguj się przez Google",
                     login_through_apple: "Zaloguj się przez Apple",
-        
+
                     nice_to_see_you: "Miło cię widzieć!",
                     what_will_you_do_today: "Co będziesz dzisiaj robić?",
                 },
@@ -254,12 +255,13 @@ i18next.use(initReactI18next).init({
                 settings: {
                     informations: {
                         title: "Informacje",
-                        description: "Zaktualizuj swoje zdjęcie profilowe, nazwę i inne informacje.",
+                        description:
+                            "Zaktualizuj swoje zdjęcie profilowe, nazwę i inne informacje.",
                     },
                     preferences: {
                         title: "Preferencje",
                         description: "Dostosuj wygląd, motyw.",
-                    }
+                    },
                 },
                 nav: {
                     profile: "Profil",
@@ -290,9 +292,10 @@ i18next.use(initReactI18next).init({
                     level: "Poziom",
                     language: "Język",
                     ratings: "Ocen",
-                    description: "Opis",                },
+                    description: "Opis",
+                },
             },
-        },    
+        },
         de: {
             translation: {
                 sweetalert: {
@@ -349,7 +352,7 @@ i18next.use(initReactI18next).init({
                     login_through_facebook: "Mit Facebook anmelden",
                     login_through_google: "Mit Google anmelden",
                     login_through_apple: "Mit Apple anmelden",
-        
+
                     nice_to_see_you: "Schön, dich zu sehen!",
                     what_will_you_do_today: "Was wirst du heute tun?",
                 },
@@ -381,7 +384,8 @@ i18next.use(initReactI18next).init({
                 },
                 mobile_app: {
                     title: "Mobile App",
-                    description: "Nehmen Sie Ihre Kurse überall auf Ihrem Handy mit!",
+                    description:
+                        "Nehmen Sie Ihre Kurse überall auf Ihrem Handy mit!",
                 },
                 profile: {
                     profile: "Profil",
@@ -397,12 +401,13 @@ i18next.use(initReactI18next).init({
                 settings: {
                     informations: {
                         title: "Informationen",
-                        description: "Aktualisieren Sie Ihr Profilbild, Ihren Namen und andere Informationen.",
+                        description:
+                            "Aktualisieren Sie Ihr Profilbild, Ihren Namen und andere Informationen.",
                     },
                     preferences: {
                         title: "Einstellungen",
                         description: "Erscheinungsbild und Thema anpassen.",
-                    }
+                    },
                 },
                 nav: {
                     profile: "Profil",
@@ -425,7 +430,7 @@ i18next.use(initReactI18next).init({
                     tech_support: "Technischer Support",
                     cookie_settings: "Cookie-Einstellungen",
                 },
-                courses:{
+                courses: {
                     participants: "Teilnehmer",
                     duration: "Dauer",
                     teacher: "Lehrer",
@@ -433,9 +438,9 @@ i18next.use(initReactI18next).init({
                     level: "Niveau",
                     language: "Sprache",
                     ratings: "Bewertungen",
-                    description: "Beschreibung",                    
+                    description: "Beschreibung",
                 },
             },
-        }, 
+        },
     },
 });

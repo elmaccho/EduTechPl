@@ -77,7 +77,7 @@ export default function Login({ status, canResetPassword }) {
                         className="mt-1 mb-4"
                     />
 
-                    <div className="form-row mb-3">
+                    <div className="form-row mb-3 account-links">
                         {canResetPassword && (
                             <Link
                                 href={route("password.request")}
@@ -105,7 +105,7 @@ export default function Login({ status, canResetPassword }) {
                         </button>
                     </div>
                     <div className="row m-0 d-flex justify-content-center mb-4">
-                        <span className="text-light d-flex gap-2 justify-content-center">
+                        <span className="text-light d-flex gap-2 justify-content-center account-links">
                             <p>{t('login.no_account_yet')}</p>
                             <Link className="link" href={route("register")}>
                                 {t('login.register_now')}
